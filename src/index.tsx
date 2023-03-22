@@ -1,16 +1,33 @@
-import ReactDOM from 'react-dom/client';
-import App from './App';
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
+import { BrowserRouter } from 'react-router-dom';
+import { store } from './redux/store';
 
-const rootElem = document.getElementById('root');
+function getRoles(props: string) {
+  const role = props;
 
-if (rootElem) {
-  const root = ReactDOM.createRoot(rootElem);
+  if (role === 'admin') {
+    return 'admin';
+  }
 
-  root.render(
-    // <BrowserRouter>
-    //   <Provider store={store}>
-    <App />,
-    //   </Provider>
-    // </BrowserRouter>,
-  );
+  if (role === 'organization') {
+    return 'organization';
+  }
+
+  if (role === 'user') {
+    return 'user';
+  }
 }
+
+const App = () => {
+  return (
+    <React.StrictMode>
+      <Provider store={store}>
+        <BrowserRouter>{getRoles('user')}</BrowserRouter>
+      </Provider>
+    </React.StrictMode>
+  );
+};
+
+ReactDOM.render(<App />, document.getElementById('root'));
