@@ -2,7 +2,9 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  list-style: none;
+  text-decoration: none;
+  font-family: 'Nunito', Roboto, system-ui, Tahoma, sans-serif;
 }
 
 html {
@@ -29,6 +31,7 @@ html {
     font-size: 9px;
   }
 }
+
 body {
   background-color: #fff;
   height: 100%;

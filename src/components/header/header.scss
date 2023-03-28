@@ -1,5 +1,51 @@
-header.header {
-  display: block;
-  background: #1bb337d0;
-  height: 50px;
+.header {
+  background: #56d56dd0;
+  // padding: 10px 0;
+  color: #fff;
+  width: 100%;
+  justify-content: center;
+  display: flex;
+  height: 65px;
+
+  .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 1300px;
+
+    @media (max-width: 768px) {
+      flex-direction: column;
+    }
+  }
+
+  &__nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 550px;
+    align-items: center;
+  }
+
+  &__logo {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-end;
+    width: 190px;
+
+    h1 {
+      color: #fff;
+      font-size: 24px;
+      letter-spacing: 1%;
+      font-weight: 800;
+    }
+
+    p {
+      color: #7b7b7b;
+    }
+  }
+
+  &__inscription {
+    font-size: 24px;
+  }
 }
