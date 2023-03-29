@@ -2,11 +2,16 @@ import React from 'react';
 
 import { Header } from '../../../components';
 
+import './mainPage.scss';
+
 const Main: React.FC = () => {
   return (
     <>
       <Header />
-      Main User
+      <div className="box">
+        <div>Search</div>
+        <div>Filter</div>
+      </div>
     </>
   );
 };
