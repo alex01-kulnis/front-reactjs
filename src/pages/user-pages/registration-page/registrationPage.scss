@@ -1,0 +1,80 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  border: 2px solid black;
+}
+
+.registration {
+  display: flex;
+  flex-direction: column;
+  width: 1440px;
+  height: 700px;
+}
+
+.bloc-tabs {
+  display: flex;
+  align-items: flex-end;
+  position: relative;
+  height: 35px;
+  cursor: pointer;
+  background: white;
+  outline: none;
+}
+
+.active-tabs {
+  background: #fff;
+  color: rgb(57, 50, 50);
+  border: 2px solid rgb(88, 147, 241);
+  border-bottom: 1px solid transparent;
+}
+
+button {
+  border: 1px solid rgba(0, 0, 0, 0.274);
+  font-size: 24px;
+  color: grey;
+  width: 250px;
+}
+
+.content-tabs {
+  flex-grow: 1;
+}
+.content {
+  background: white;
+  padding: 20px;
+  width: 100%;
+  height: 100%;
+  display: none;
+}
+
+.content h2 {
+  padding: 0px 0 5px 0px;
+}
+
+.content hr {
+  width: 100px;
+  height: 2px;
+  background: #222;
+  margin-bottom: 5px;
+}
+
+.content p {
+  width: 100%;
+  height: 100%;
+}
+
+.active-content {
+  display: block;
+}
+
+.content-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 400px;
+  width: 100%;
+  border: 1px solid green;
+}

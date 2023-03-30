@@ -1,4 +1,4 @@
-import CabinetPage from './cabinet-page/CabinetPage';
+import RegistrationPage from './registration-page/RegistrationPage';
 import MainPage from './main-page/MainPage';
 
-export { MainPage, CabinetPage };
+export { MainPage, RegistrationPage };
