@@ -10,7 +10,7 @@ type OrganizationFormProps = {
 const OrganizationForm: React.FC<OrganizationFormProps> = ({ value }) => {
   return (
     <div className="block-org-form">
-      <div className={value === 2 ? 'active-content-org-form' : 'content-org-form'}>
+      <div className={value === 2 ? 'active-content-block-org-form' : 'content-block-org-form'}>
         <div className="block-input">
           <div className="input-field">
             <input type="text" name="name" autoComplete="off" required />
