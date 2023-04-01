@@ -9,7 +9,7 @@ type OrganizationFormProps = {
 
 const OrganizationForm: React.FC<OrganizationFormProps> = ({ value }) => {
   return (
-    <div className="block-form">
+    <div className="block-org-form">
       <div className={value === 2 ? 'active-content-org-form' : 'content-org-form'}>
         <div className="block-input">
           <div className="input-field">
