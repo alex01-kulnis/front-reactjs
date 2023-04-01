@@ -21,7 +21,6 @@ const UserForm: React.FC<UserFormProps> = ({ value }) => {
         <label htmlFor="">Повторите пароль</label>
         <input type="text" />
       </div>
-      <button>Регистрация</button>
     </div>
   );
 };

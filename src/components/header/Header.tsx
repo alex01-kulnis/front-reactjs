@@ -24,7 +24,7 @@ const Header: React.FC = () => {
           <div className="header__inscription">Войти</div>
         </Link>
         <Link to="/registration">
-          <div className="header__inscription">Зарегистрироваться</div>
+          <div className="header__inscription">Регистрация</div>
         </Link>
       </div>
     </header>
