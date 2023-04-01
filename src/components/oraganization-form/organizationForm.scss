@@ -1,13 +1,34 @@
-.block-org-form {
+.content-block-org-form {
+  display: none;
+}
+
+.active-content-block-org-form {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-around;
+  width: 100%;
+  // align-items: flex-start;
+}
+
+.block-org-input {
+  display: flex;
+  flex-direction: column;
   width: 100%;
   height: 100%;
-  align-items: center;
+
+  .block-content {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+  }
+
+  .sumbit-button {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+  }
 
   button {
-    margin-top: 50px;
     background-color: white;
     border-radius: 8px;
     color: white;
@@ -23,22 +44,5 @@
       background-color: #4caf50;
       color: white;
     }
-  }
-}
-
-.content-block-org-form {
-  display: none;
-}
-
-.active-content-block-org-form {
-  display: flex;
-  justify-content: space-around;
-  width: 100%;
-  align-items: flex-start;
-
-  .block-input {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
   }
 }
