@@ -1,13 +1,15 @@
 .header {
   display: flex;
+  position: fixed;
   justify-content: center;
 
   justify-content: space-around;
   align-items: center;
   width: 100%;
   height: 65px;
-  background: #56d56dd0;
+  background: #56d56d;
   color: #fff;
+  z-index: 1;
 
   &__nav {
     display: flex;

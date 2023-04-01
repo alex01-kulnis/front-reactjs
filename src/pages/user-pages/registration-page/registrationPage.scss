@@ -12,7 +12,8 @@
   display: flex;
   flex-direction: column;
   width: 1140px;
-  height: 700px;
+  height: 600px;
+  // background: #ae42f68d;
 }
 
 .bloc-tabs {
@@ -45,57 +46,7 @@ button {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 500px;
+  // height: 500px;
   width: 100%;
-  border: 1px solid rgba(0, 0, 0, 0.274);
+  // border: 1px solid rgba(0, 0, 0, 0.274);
 }
-
-// .content {
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
-//   background: white;
-//   padding: 20px;
-//   width: 100%;
-//   height: 100%;
-//   display: none;
-
-//   input {
-//     width: 100%;
-//     padding: 10px;
-//     font-size: 18px;
-//   }
-
-//   .field-item {
-//     display: flex;
-//     flex-direction: column;
-//     margin: 20px;
-//     color: #56d56dd0;
-//   }
-// }
-
-// .active-content {
-//   display: flex;
-//   flex-direction: column;
-//   justify-content: center;
-//   align-items: center;
-
-//   button {
-//     margin-top: 5px;
-//     background-color: white; /* Green */
-//     border-radius: 8px;
-//     color: white;
-//     padding: 15px 32px;
-//     text-align: center;
-//     text-decoration: none;
-//     display: inline-block;
-//     font-size: 16px;
-//     transition-duration: 0.4s;
-//     color: black;
-
-//     &:hover {
-//       background-color: #4caf50; /* Green */
-//       color: white;
-//     }
-//   }
-// }

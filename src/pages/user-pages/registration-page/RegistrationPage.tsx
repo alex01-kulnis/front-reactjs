@@ -25,7 +25,6 @@ const RegistrationPage: React.FC = () => {
         <div className="content-form">
           <UserForm value={toggleState} />
           <OrganizationForm value={toggleState} />
-          <button type="submit">Регистрация1</button>
         </div>
       </div>
     </div>
