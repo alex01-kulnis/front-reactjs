@@ -22,7 +22,7 @@ const RegistrationPage: React.FC = () => {
             Для организаций
           </button>
         </div>
-        <div className="content-form">
+        <div className="content-forms">
           <UserForm value={toggleState} />
           <OrganizationForm value={toggleState} />
         </div>
