@@ -14,6 +14,7 @@ const RegistrationPage: React.FC = () => {
   return (
     <div className="form">
       <div className="registration">
+        {/* <div className=''>Регистрация</div> */}
         <div className="bloc-tabs">
           <button className={toggleState === 1 ? 'tabs active-tabs' : 'tabs'} onClick={() => toggleTab(1)}>
             Для пользоватей
