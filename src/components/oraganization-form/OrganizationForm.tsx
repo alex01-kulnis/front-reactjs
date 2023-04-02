@@ -11,7 +11,7 @@ const OrganizationForm: React.FC<OrganizationFormProps> = ({ value }) => {
   return (
     <form className={value === 2 ? 'active-content-block-org-form' : 'content-block-org-form'}>
       <div className="block-org-input">
-        <div className="block-content">
+        <div className="block-org-content">
           <div className="input-field">
             <label htmlFor="NameOrg">Название организации:</label>
             <input type="text" placeholder="СДЮШОР" required title="Поле не должно быть пустым" />
@@ -40,7 +40,7 @@ const OrganizationForm: React.FC<OrganizationFormProps> = ({ value }) => {
             <div className="validation">Неверный формат</div>
           </div>
         </div>
-        <div className="block-content">
+        <div className="block-org-content">
           <div className="input-field">
             <label htmlFor="">Фамилия:</label>
             <input type="text" placeholder="Жмышенко" required title="Поле не должно быть пустым" />
@@ -57,11 +57,11 @@ const OrganizationForm: React.FC<OrganizationFormProps> = ({ value }) => {
             <div className="validation">Поле не должно быть пустым</div>
           </div>
         </div>
-        <div className="block-content">
+        <div className="block-org-content">
           <div className="input-field">
             <label htmlFor="email">Логин:</label>
-            <input type="text" placeholder="kulnis7" required />
-            <div className="validation">Not valid</div>
+            <input type="text" minLength={6} placeholder="kulnis7" required title="Минимум 8 символов" />
+            <div className="validation">Минимум 8 символов</div>
           </div>
           <div className="input-field">
             <label htmlFor="password">Пароль:</label>

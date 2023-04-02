@@ -5,7 +5,6 @@
 .active-content-block-org-form {
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
   width: 100%;
 }
 
@@ -15,7 +14,7 @@
   width: 100%;
   height: 100%;
 
-  .block-content {
+  .block-org-content {
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -31,17 +30,14 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      // margin-top: 20px;
-      // width: 400px;
       height: 45px;
 
       background-color: white;
       border-radius: 8px;
       color: white;
-      // padding: 15px 30px;
+      padding: 0px 5px;
       text-align: center;
       text-decoration: none;
-      // display: inline-block;
       font-size: 16px;
       transition-duration: 0.4s;
       color: black;
@@ -50,24 +46,6 @@
         background-color: #4caf50;
         color: white;
       }
-    }
-  }
-
-  button {
-    background-color: white;
-    border-radius: 8px;
-    color: white;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    transition-duration: 0.4s;
-    color: black;
-
-    &:hover {
-      background-color: #4caf50;
-      color: white;
     }
   }
 }
