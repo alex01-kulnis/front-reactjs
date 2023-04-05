@@ -6,7 +6,7 @@ import { BrowserRouter } from 'react-router-dom';
 import AdminApp from './app/AdminApp';
 import OrganizationApp from './app/OrganizationApp';
 import UserApp from './app/UserApp';
-import { store } from './redux/store';
+import store from './redux/store/index';
 
 import './scss/app.scss';
 
