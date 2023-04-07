@@ -1,8 +1,8 @@
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
-import { Header } from '../components';
 
 import { RegistrationPage, MainPage } from '../pages/user-pages';
+import { Header } from '../components';
 
 const UserApp: React.FC = () => {
   return (

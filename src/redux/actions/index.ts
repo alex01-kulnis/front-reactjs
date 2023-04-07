@@ -1,10 +1,10 @@
 import * as userActions from './user';
 // import * as adminActions from './admin';
-// import * as postsAction from './post';
+import * as organizationAction from './organization';
 
 const actions = {
   ...userActions,
-  //   ...adminActions,
+  ...organizationAction,
   //   ...postsAction,
 };
 export default actions;

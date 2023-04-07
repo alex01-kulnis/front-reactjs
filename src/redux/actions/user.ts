@@ -3,19 +3,13 @@ import { NavigateFunction } from 'react-router-dom';
 import { AppThunk } from '../store';
 
 import { userService } from '../../service/user';
+import { Notify } from '../../service/toasts';
 
 export const registerUserAsync =
   (email: string, name: string, password: string, navigate: NavigateFunction): AppThunk<void> =>
-  async (dispatch) => {
-    console.log('registerUserAsync');
-
+  async () => {
     const { data } = await userService.registerUser(email, name, password);
-    //     const { user, accessToken, refreshToken } = data;
-    //     setAccessToken(accessToken);
-    //     setRefreshToken(refreshToken);
-    //     Notify.success('Вы успешно зарегистрированы!');
-    //     dispatch(setUserData(user));
-    console.log('console', data);
-
+    console.log('data', data);
+    Notify.success('Вы успешно авторизованы!');
     navigate('/auth');
   };

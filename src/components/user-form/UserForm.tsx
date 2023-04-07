@@ -7,6 +7,7 @@ import { InputChangeHandler } from '../../types/types';
 
 import './userForm.scss';
 import '../UI/valid-input.scss';
+import 'react-toastify/dist/ReactToastify.css';
 
 type UserFormProps = {
   value: number;
@@ -31,7 +32,8 @@ const UserForm: React.FC<UserFormProps> = ({ value }) => {
     setPassword(e.target.value);
   };
 
-  const onRegisterClick = () => {
+  const onRegisterClick = (e: any) => {
+    e.preventDefault();
     registerUserAsync(email, login, password, navigate);
   };
 
@@ -82,7 +84,7 @@ const UserForm: React.FC<UserFormProps> = ({ value }) => {
           </div>
         </div>
         <div className="sumbit-user-input">
-          <input type="submit" value="Зарегистрироваться" onClick={onRegisterClick} />
+          <button onClick={onRegisterClick}>Зарегистрироваться</button>
         </div>
       </div>
     </form>
