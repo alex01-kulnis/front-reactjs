@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
@@ -12,27 +12,33 @@ import store from './redux/store/index';
 import 'react-toastify/dist/ReactToastify.css';
 import './scss/app.scss';
 
-function getRoles(props: string) {
-  const role = props;
-
-  if (role === 'admin') {
-    return <AdminApp />;
-  }
-
-  if (role === 'organization') {
-    return <OrganizationApp />;
-  }
-
-  if (role === 'user') {
-    return <UserApp />;
-  }
-}
-
 const App = () => {
+  // useEffect(() => {
+  //   if (window.localStorage.getItem('token') !== null) {
+  //     // user.setUser(user);
+  //     // user.setIsAuth(true);
+  //   }
+  // });
+  const getRoles = (props: string) => {
+    const role = props;
+
+    if (role === 'admin') {
+      return <AdminApp />;
+    }
+
+    if (role === 'organization') {
+      return <OrganizationApp />;
+    }
+
+    if (role === 'user') {
+      return <UserApp />;
+    }
+  };
   return (
     <React.StrictMode>
       <Provider store={store}>
         <ToastContainer
+          style={{ width: '500px' }}
           position="top-center"
           newestOnTop
           closeOnClick
