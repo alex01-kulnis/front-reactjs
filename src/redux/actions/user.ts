@@ -8,8 +8,11 @@ import { Notify } from '../../service/toasts';
 export const registerUserAsync =
   (email: string, name: string, password: string, navigate: NavigateFunction): AppThunk<void> =>
   async () => {
-    const { data } = await userService.registerUser(email, name, password);
-    console.log('data', data);
-    Notify.success('Вы успешно авторизованы!');
-    navigate('/auth');
+    try {
+      await userService.registerUser(email, name, password);
+      Notify.success('Вы успешно зарегистрированы!');
+      navigate('/auth');
+    } catch (error: any) {
+      Notify.error(error.response.data.message);
+    }
   };

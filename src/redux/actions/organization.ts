@@ -27,6 +27,7 @@ export const registerOrgAsync =
       login,
       password,
     );
+
     console.log('data org', data);
     navigate('/auth');
   };
