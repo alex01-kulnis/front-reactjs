@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
-import { OrganizationForm, UserForm } from '../../../components';
+import { OrganizationForm, UserForm } from "../../../components";
 
-import './registrationPage.scss';
+import "./registrationPage.scss";
 
 const RegistrationPage: React.FC = () => {
   const [toggleState, setToggleState] = useState(1);
@@ -16,10 +16,16 @@ const RegistrationPage: React.FC = () => {
       <div className="registration">
         {/* <div className=''>Регистрация</div> */}
         <div className="bloc-tabs">
-          <button className={toggleState === 1 ? 'tabs active-tabs' : 'tabs'} onClick={() => toggleTab(1)}>
+          <button
+            className={toggleState === 1 ? "tabs active-tabs" : "tabs"}
+            onClick={() => toggleTab(1)}
+          >
             Для пользоватей
           </button>
-          <button className={toggleState === 2 ? 'tabs active-tabs' : 'tabs'} onClick={() => toggleTab(2)}>
+          <button
+            className={toggleState === 2 ? "tabs active-tabs" : "tabs"}
+            onClick={() => toggleTab(2)}
+          >
             Для организаций
           </button>
         </div>

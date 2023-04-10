@@ -1,12 +1,12 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React from "react";
+import { Link } from "react-router-dom";
 
-import robotSvg from '../../assets/robot-logo.svg';
+import robotSvg from "../../../assets/robot-logo.svg";
 // import personSvg from '../../assets/person.png';
 
-import './header.scss';
+import "./userHeader.scss";
 
-const Header: React.FC = () => {
+const UserHeader: React.FC = () => {
   return (
     <header className="header">
       <Link to="/">
@@ -38,4 +38,4 @@ const Header: React.FC = () => {
 </div>
 </div> */
 
-export default Header;
+export default UserHeader;

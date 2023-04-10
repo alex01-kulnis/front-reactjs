@@ -1,16 +1,16 @@
-import React, { useEffect } from 'react';
-import ReactDOM from 'react-dom';
-import { Provider } from 'react-redux';
-import { BrowserRouter } from 'react-router-dom';
-import { ToastContainer } from 'react-toastify';
+import React, { useEffect } from "react";
+import ReactDOM from "react-dom";
+import { Provider } from "react-redux";
+import { BrowserRouter } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
 
-import AdminApp from './app/AdminApp';
-import OrganizationApp from './app/OrganizationApp';
-import UserApp from './app/UserApp';
-import store from './redux/store/index';
+import AdminApp from "./app/AdminApp";
+import OrganizationApp from "./app/OrganizationApp";
+import UserApp from "./app/UserApp";
+import store from "./redux/store/index";
 
-import 'react-toastify/dist/ReactToastify.css';
-import './scss/app.scss';
+import "react-toastify/dist/ReactToastify.css";
+import "./scss/app.scss";
 
 const App = () => {
   // useEffect(() => {
@@ -22,15 +22,15 @@ const App = () => {
   const getRoles = (props: string) => {
     const role = props;
 
-    if (role === 'admin') {
+    if (role === "admin") {
       return <AdminApp />;
     }
 
-    if (role === 'organization') {
+    if (role === "organization") {
       return <OrganizationApp />;
     }
 
-    if (role === 'user') {
+    if (role === "user") {
       return <UserApp />;
     }
   };
@@ -38,7 +38,7 @@ const App = () => {
     <React.StrictMode>
       <Provider store={store}>
         <ToastContainer
-          style={{ width: '500px' }}
+          style={{ width: "500px" }}
           position="top-center"
           newestOnTop
           closeOnClick
@@ -46,10 +46,10 @@ const App = () => {
           hideProgressBar={false}
           pauseOnHover
         />
-        <BrowserRouter>{getRoles('user')}</BrowserRouter>
+        <BrowserRouter>{getRoles("admin")}</BrowserRouter>
       </Provider>
     </React.StrictMode>
   );
 };
 
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(<App />, document.getElementById("root"));

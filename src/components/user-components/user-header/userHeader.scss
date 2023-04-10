@@ -1,0 +1,58 @@
+.header {
+  display: flex;
+  position: fixed;
+  justify-content: center;
+
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  height: 65px;
+  background: #56d56d;
+  color: #fff;
+  z-index: 1;
+
+  &__nav {
+    display: flex;
+    justify-content: space-between;
+    width: 750px;
+    height: 30px;
+    align-items: center;
+  }
+
+  &__logo {
+    display: flex;
+    justify-content: space-between;
+    // align-items: flex-end;
+    width: 190px;
+
+    h1 {
+      color: #fff;
+      font-size: 24px;
+      letter-spacing: 1%;
+      font-weight: 800;
+    }
+
+    p {
+      color: #7b7b7b;
+    }
+  }
+
+  &__inscription {
+    color: #fff;
+    font-size: 20px;
+  }
+
+  &__person {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    font-size: 24px;
+    color: #fff;
+
+    .logo_cabinet {
+      display: flex;
+      align-items: center;
+      margin-left: 9px;
+    }
+  }
+}

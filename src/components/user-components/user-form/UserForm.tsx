@@ -1,13 +1,13 @@
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import React from "react";
+import { useNavigate } from "react-router-dom";
 
-import { useFieldState } from '../../hooks/useFieldState';
-import { useActions } from '../../hooks/useActions';
-import { InputChangeHandler } from '../../types/types';
+import { useFieldState } from "../../../hooks/useFieldState";
+import { useActions } from "../../../hooks/useActions";
+import { InputChangeHandler } from "../../../types/types";
 
-import './userForm.scss';
-import '../UI/valid-input.scss';
-import 'react-toastify/dist/ReactToastify.css';
+import "./userForm.scss";
+import "../../UI/valid-input.scss";
+import "react-toastify/dist/ReactToastify.css";
 
 type UserFormProps = {
   value: number;
@@ -38,7 +38,13 @@ const UserForm: React.FC<UserFormProps> = ({ value }) => {
   };
 
   return (
-    <form className={value === 1 ? 'active-content-block-user-form' : 'content-block-user-form'}>
+    <form
+      className={
+        value === 1
+          ? "active-content-block-user-form"
+          : "content-block-user-form"
+      }
+    >
       <div className="block-user-input">
         <div className="block-user-content">
           <div className="input-field">
@@ -79,7 +85,8 @@ const UserForm: React.FC<UserFormProps> = ({ value }) => {
               onChange={onPasswordChange}
             />
             <div className="validation">
-              Минимум 8 символов, одна цифра, одна буква в верхнем регистре и одна в нижнем
+              Минимум 8 символов, одна цифра, одна буква в верхнем регистре и
+              одна в нижнем
             </div>
           </div>
         </div>
