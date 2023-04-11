@@ -1,13 +1,13 @@
-import { MainPage, NotFoundPage } from '../pages/user-pages';
-import { ElementRoutes } from '../types/routes';
+import { MainPage, NotFoundPage } from "../pages";
+import { ElementRoutes } from "../types/routes";
 
 const defaultRoutes: ElementRoutes = [
   {
-    path: '/',
+    path: "/",
     element: MainPage,
   },
   {
-    path: '/*',
+    path: "/*",
     element: NotFoundPage,
   },
 ];

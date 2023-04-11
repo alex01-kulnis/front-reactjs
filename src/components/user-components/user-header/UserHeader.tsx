@@ -8,23 +8,23 @@ import "./userHeader.scss";
 
 const UserHeader: React.FC = () => {
   return (
-    <header className="header">
+    <header className="header-user">
       <Link to="/">
-        <div className="header__logo">
+        <div className="header-user__logo">
           <img width="36" src={robotSvg} alt="logo" />
           <div>
             <h1>Hobby Street</h1>
           </div>
         </div>
       </Link>
-      <div className="header__nav">
-        <div className="header__inscription">Главная</div>
-        <div className="header__inscription">Подписки</div>
+      <div className="header-user__nav">
+        <div className="header-user__inscription">Главная</div>
+        <div className="header-user__inscription">Подписки</div>
         <Link to="/auth">
-          <div className="header__inscription">Войти</div>
+          <div className="header-user__inscription">Войти</div>
         </Link>
         <Link to="/registration">
-          <div className="header__inscription">Регистрация</div>
+          <div className="header-user__inscription">Регистрация</div>
         </Link>
       </div>
     </header>

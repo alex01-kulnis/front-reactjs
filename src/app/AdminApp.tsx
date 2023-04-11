@@ -1,15 +1,17 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
-import AdminHeader from "../components/admin-components/admin-header/AdminHeader";
+
+import { UsersPage } from "../pages";
+import { AdminHeader } from "../components";
 
 const AdminApp: React.FC = () => {
   return (
     <>
       <AdminHeader />
       <Routes>
-        <Route path="/" element={<div />} />
-        <Route path="/registration" element={<div />} />
-        <Route path="/auth" element={<div />} />
+        <Route path="/admin/users" element={<UsersPage />} />
+        {/* <Route path="/registration" element={<div />} /> */}
+        <Route path="/admin/auth" element={<div />} />
       </Routes>
     </>
   );

@@ -1,7 +1,7 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
 
-import { RegistrationPage, MainPage } from "../pages/user-pages";
+import { RegistrationPage, MainPage } from "../pages";
 import { UserHeader } from "../components";
 
 const UserApp: React.FC = () => {

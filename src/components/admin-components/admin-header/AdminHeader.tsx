@@ -4,29 +4,26 @@ import { Link } from "react-router-dom";
 import robotSvg from "../../../assets/robot-logo.svg";
 // import personSvg from '../../assets/person.png';
 
-// import "./userHeader.scss";
+import "./adminHeader.scss";
 
 const AdminHeader: React.FC = () => {
   return (
-    <header className="header">
+    <header className="header-admin">
       <Link to="/admin">
-        <div className="header__logo">
+        <div className="header-admin__logo">
           <img width="36" src={robotSvg} alt="logo" />
           <div>
             <h1>Hobby Street</h1>
           </div>
         </div>
       </Link>
-      <div className="header__nav">
-        <Link to="admin/users">
-          <div className="header__inscription">Пользователи</div>
+      <div className="header-admin__nav">
+        <Link to="/admin/users">
+          <div className="header-admin__inscription">Пользователи</div>
         </Link>
-        <div className="header__inscription">Заявки</div>
-        <Link to="admin/personal-cabinet">
-          <div className="header__inscription">Личный кабинет</div>
-        </Link>
+        <div className="header-admin__inscription">Заявки</div>
         <Link to="/">
-          <div className="header__inscription">Выйти</div>
+          <div className="header-admin__inscription">Выйти</div>
         </Link>
       </div>
     </header>
