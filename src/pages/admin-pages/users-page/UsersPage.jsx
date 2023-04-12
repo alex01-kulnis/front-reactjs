@@ -1,23 +1,28 @@
 /* eslint-disable */
-import React, { useState, useEffect } from "react";
-import DataTable from "react-data-table-component";
+import React, { useEffect, useState } from "react";
+import { DataTable } from "primereact/datatable";
+import { Column } from "primereact/column";
+import { InputText } from "primereact/inputtext";
+import { InputNumber } from "primereact/inputnumber";
 
-import "styled-components";
-import "./usersPage.scss";
+//theme
+import "primereact/resources/themes/lara-light-indigo/theme.css";
+
+//core
+import "primereact/resources/primereact.min.css";
+
+//icons
+import "primeicons/primeicons.css";
+
 import axios from "axios";
 
 const UsersPage = () => {
-  const [search, setSearch] = useState("");
-  const [users, setUsers] = useState([]);
-  const [filteredUsers, setFilteredUsers] = useState([]);
-
-  const [modalActive, setModalActive] = useState(false);
+  const [users, setUsers] = useState(null);
 
   const getUsers = async () => {
     try {
       const res = await axios.get("http://localhost:3001/api/users");
       setUsers(res.data);
-      setFilteredUsers(res.data);
     } catch (error) {}
   };
 
@@ -25,161 +30,86 @@ const UsersPage = () => {
     getUsers();
   }, []);
 
-  useEffect(() => {
-    const result = users.filter((users) => {
-      return users.login.toLowerCase().match(search.toLocaleLowerCase());
-    });
-    setFilteredUsers(result);
-  }, [search]);
+  const onRowEditComplete = (e) => {
+    let _users = [...users];
+    let { newData, index } = e;
 
-  const handleEditFormChange = (value) => {
-    console.log(value);
+    console.log(newData);
+
+    _users[index] = newData;
+
+    setUsers(_users);
   };
 
-  const colums = [
-    {
-      name: "id",
-      selector: (row) => row.id,
-      sortable: true,
-    },
-    {
-      name: "Имя организации",
-      selector: (row) => row.organization_name,
-      sortable: true,
-    },
-    {
-      name: "Имя",
-      selector: (row) => row.first_name,
-      sortable: true,
-    },
-    {
-      name: "Отчество",
-      selector: (row) => row.middle_name,
-      sortable: true,
-    },
-    {
-      name: "Фамилия",
-      selector: (row) => row.last_name,
-      sortable: true,
-    },
-    {
-      name: "Тел.",
-      selector: (row) => row.phone,
-      sortable: true,
-    },
-    {
-      name: "Логин",
-      selector: (row) => row.login,
-      sortable: true,
-    },
-    {
-      name: "Почта",
-      selector: (row) => row.email,
-      sortable: true,
-    },
-    {
-      name: "Пароль",
-      selector: (row) => row.password,
-      sortable: true,
-    },
-    {
-      name: "",
-      cell: (row) => (
-        <>
-          {/* <button className="button-edit" onClick={() => alert(row.id)}>
-            Edit
-          </button> */}
-          <button onClick={() => handleDelete(row)}>Delete</button>
-          <button onClick={() => setModalActive(true)}>ModalWin</button>
-        </>
-      ),
-    },
-  ];
-
-  const handleDelete = (row) => {
-    console.log(row);
-    console.log(users.filter((item) => item.id !== row.id));
-    setUsers(users.filter((item) => item.id !== row.id));
-    setFilteredUsers(users.filter((item) => item.id !== row.id));
-    // send delete request to server
+  const textEditor = (options) => {
+    return (
+      <InputText
+        type="text"
+        value={options.value}
+        onChange={(e) => options.editorCallback(e.target.value)}
+      />
+    );
   };
 
-  // const data = [
-  //   {
-  //     id: 1,
-  //     name: "aleвx",
-  //     email: "email@alex",
-  //     age: 21,
-  //   },
-  //   {
-  //     id: 2,
-  //     name: "vasy",
-  //     email: "email@vasy",
-  //     age: 22,
-  //   },
-  //   {
-  //     id: 3,
-  //     name: "pas",
-  //     email: "email@pas",
-  //     age: 23,
-  //   },
-  //   {
-  //     id: 3,
-  //     name: "pas",
-  //     email: "email@pas",
-  //     age: 23,
-  //   },
-  //   {
-  //     id: 3,
-  //     name: "pas",
-  //     email: "email@pas",
-  //     age: 23,
-  //   },
-  //   {
-  //     id: 3,
-  //     name: "pas",
-  //     email: "email@pas",
-  //     age: 23,
-  //   },
-  //   {
-  //     id: 3,
-  //     name: "pas",
-  //     email: "email@pas",
-  //     age: 23,
-  //   },
-  //   {
-  //     id: 3,
-  //     name: "pas",
-  //     email: "email@pas",
-  //     age: 23,
-  //   },
-  // ];
+  const deleteRow = (id) => {
+    console.log(id);
+    const newData = products.filter((item) => item.id !== id);
+    setUsers(newData);
+  };
+
+  const actionBodyTemplate = (rowData) => {
+    return (
+      <button
+        style={{ height: "50px" }}
+        icon="pi pi-trash"
+        onClick={() => deleteRow(rowData.id)}
+      />
+    );
+  };
 
   return (
-    <>
-      <div className="table">
-        <DataTable
-          title="Users List"
-          columns={colums}
-          data={filteredUsers}
-          pagination
-          fixedHeader
-          fixedHeaderScrollHeight="450px"
-          // selectableRows
-          // selectableRowsHighlight
-          highlightOnHover
-          subHeader
-          subHeaderComponent={
-            <input
-              type="text"
-              placeholder="Search here"
-              value={search}
-              onChange={(e) => setSearch(e.target.value)}
-            />
-          }
+    <div className="card p-fluid">
+      <DataTable
+        value={users}
+        editMode="row"
+        dataKey="id"
+        onRowEditComplete={onRowEditComplete}
+        tableStyle={{ minWidth: "50rem" }}
+        scrollable
+        scrollHeight="500px"
+      >
+        <Column
+          field="id"
+          header="Code"
+          editor={(options) => textEditor(options)}
+          style={{ width: "20%" }}
         />
-      </div>
-    </>
+        <Column
+          field="login"
+          header="Code"
+          editor={(options) => textEditor(options)}
+          style={{ width: "20%" }}
+        />
+        <Column
+          field="email"
+          header="Code"
+          editor={(options) => textEditor(options)}
+          style={{ width: "20%" }}
+        />
+        <Column
+          field="password"
+          header="Code"
+          editor={(options) => textEditor(options)}
+          style={{ width: "20%" }}
+        />
+        <Column
+          rowEditor
+          headerStyle={{ width: "10%", minWidth: "50px" }}
+          bodyStyle={{ textAlign: "center" }}
+        />
+        <Column body={actionBodyTemplate} />
+      </DataTable>
+    </div>
   );
 };
 
