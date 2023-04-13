@@ -1,9 +1,9 @@
 /* eslint-disable */
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { DataTable } from "primereact/datatable";
 import { Column } from "primereact/column";
 import { InputText } from "primereact/inputtext";
-import { InputNumber } from "primereact/inputnumber";
+import { Button } from "primereact/button";
 
 //theme
 import "primereact/resources/themes/lara-light-indigo/theme.css";
@@ -26,6 +26,21 @@ const UsersPage = () => {
     } catch (error) {}
   };
 
+  const delUser = async (id) => {
+    try {
+      const res = await axios.delete(`http://localhost:3001/api/users/${id}`);
+    } catch (error) {}
+  };
+
+  const updateUser = async (newData) => {
+    try {
+      const res = await axios.patch(
+        `http://localhost:3001/api/users/${newData.id}`,
+        newData
+      );
+    } catch (error) {}
+  };
+
   useEffect(() => {
     getUsers();
   }, []);
@@ -33,11 +48,9 @@ const UsersPage = () => {
   const onRowEditComplete = (e) => {
     let _users = [...users];
     let { newData, index } = e;
-
     console.log(newData);
-
+    updateUser(newData);
     _users[index] = newData;
-
     setUsers(_users);
   };
 
@@ -52,19 +65,12 @@ const UsersPage = () => {
   };
 
   const deleteRow = (id) => {
-    console.log(id);
-    const newData = products.filter((item) => item.id !== id);
-    setUsers(newData);
+    delUser(id);
+    setUsers(users.filter((item) => item.id !== id));
   };
 
   const actionBodyTemplate = (rowData) => {
-    return (
-      <button
-        style={{ height: "50px" }}
-        icon="pi pi-trash"
-        onClick={() => deleteRow(rowData.id)}
-      />
-    );
+    return <Button icon="pi pi-trash" onClick={() => deleteRow(rowData.id)} />;
   };
 
   return (
@@ -74,33 +80,71 @@ const UsersPage = () => {
         editMode="row"
         dataKey="id"
         onRowEditComplete={onRowEditComplete}
-        tableStyle={{ minWidth: "50rem" }}
-        scrollable
-        scrollHeight="500px"
+        // tableStyle={{ minWidth: '50rem' }}
+        // scrollable
+        // scrollHeight="500px"
+        sortField="id"
+        sortOrder={1}
+        paginator
+        rows={5}
+        rowsPerPageOptions={[5, 10, 25, 50]}
+        paginatorTemplate="RowsPerPageDropdown FirstPageLink PrevPageLink CurrentPageReport NextPageLink LastPageLink"
+        currentPageReportTemplate="{first} to {last} of {totalRecords}"
       >
         <Column
           field="id"
-          header="Code"
+          header="id"
           editor={(options) => textEditor(options)}
-          style={{ width: "20%" }}
+          sortable
+          // style={{ width: '20%' }}
         />
         <Column
           field="login"
-          header="Code"
+          header="Логин"
           editor={(options) => textEditor(options)}
-          style={{ width: "20%" }}
+          // style={{ width: '20%' }}
         />
         <Column
           field="email"
-          header="Code"
+          header="Почта"
           editor={(options) => textEditor(options)}
-          style={{ width: "20%" }}
+          // style={{ width: '20%' }}
+        />
+        {/* <Column
+          field="password"
+          header="Пароль"
+          editor={(options) => textEditor(options)}
+          // style={{ width: '20%' }}
+        /> */}
+        <Column
+          field="middle_name"
+          header="Фамилия"
+          editor={(options) => textEditor(options)}
+          // style={{ width: '20%' }}
         />
         <Column
-          field="password"
-          header="Code"
+          field="first_name"
+          header="Имя"
           editor={(options) => textEditor(options)}
-          style={{ width: "20%" }}
+          // style={{ width: '20%' }}
+        />
+        <Column
+          field="last_name"
+          header="Отчество"
+          editor={(options) => textEditor(options)}
+          // style={{ width: '20%' }}
+        />
+        <Column
+          field="phone"
+          header="Тел."
+          editor={(options) => textEditor(options)}
+          // style={{ width: '20%' }}
+        />
+        <Column
+          field="status"
+          header="Статус"
+          //   editor={(options) => textEditor(options)}
+          // style={{ width: '20%' }}
         />
         <Column
           rowEditor

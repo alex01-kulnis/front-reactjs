@@ -21,7 +21,9 @@ const AdminHeader: React.FC = () => {
         <Link to="/admin/users">
           <div className="header-admin__inscription">Пользователи</div>
         </Link>
-        <div className="header-admin__inscription">Заявки</div>
+        <Link to="/admin/appplications">
+          <div className="header-admin__inscription">Заявки</div>
+        </Link>
         <Link to="/">
           <div className="header-admin__inscription">Выйти</div>
         </Link>
