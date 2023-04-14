@@ -46,7 +46,7 @@ const App = () => {
           hideProgressBar={false}
           pauseOnHover
         />
-        <BrowserRouter>{getRoles("admin")}</BrowserRouter>
+        <BrowserRouter>{getRoles("user")}</BrowserRouter>
       </Provider>
     </React.StrictMode>
   );

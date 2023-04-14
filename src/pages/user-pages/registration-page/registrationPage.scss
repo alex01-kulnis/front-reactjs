@@ -48,5 +48,7 @@ button {
   align-items: center;
   height: 500px;
   width: 100%;
-  border: 1px solid rgba(0, 0, 0, 0.274);
+  // border: 1px solid rgba(0, 0, 0, 0.274);
+  border: 4px solid transparent;
+  border-image: linear-gradient(90deg, #00c9ff 0%, #56d56d 100%) 20% / 1 / 0 stretch;
 }

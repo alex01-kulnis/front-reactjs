@@ -1,12 +1,12 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
-import { useFieldState } from "../../hooks/useFieldState";
-import { InputChangeHandler } from "../../types/types";
+import { useFieldState } from "../../../hooks/useFieldState";
+import { useActions } from "../../../hooks/useActions";
+import { InputChangeHandler } from "../../../types/types";
 
 import "./organizationForm.scss";
-import "../UI/valid-input.scss";
-import { useActions } from "../../hooks/useActions";
+import "../../UI/valid-input.scss";
 
 type OrganizationFormProps = {
   value: number;
