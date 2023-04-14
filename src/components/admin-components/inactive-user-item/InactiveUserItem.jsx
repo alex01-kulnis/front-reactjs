@@ -1,9 +1,9 @@
-import React, { memo } from "react";
+import React from "react";
 import axios from "axios";
 
 import "./inactiveUserItem.scss";
 
-const InactiveUserItem = memo(({ users }) => {
+const InactiveUserItem = ({ users }) => {
   const refuse = async () => {
     try {
       const res = await axios.delete(`http://localhost:3001/api/users/${users.id}`);
@@ -46,11 +46,15 @@ const InactiveUserItem = memo(({ users }) => {
         </div>
       </div>
       <div className="post__btns">
-        <button onClick={accept}>Принять</button>
-        <button onClick={refuse}>Отлонить</button>
+        <button className="accept-button" onClick={accept}>
+          Принять
+        </button>
+        <button className="refuce-button" onClick={refuse}>
+          Отлонить
+        </button>
       </div>
     </div>
   );
-});
+};
 
 export default InactiveUserItem;

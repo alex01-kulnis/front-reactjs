@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react";
 import { DataTable } from "primereact/datatable";
 import { Column } from "primereact/column";
+import { FilterMatchMode, FilterOperator } from "primereact/api";
 import { InputText } from "primereact/inputtext";
 import { Button } from "primereact/button";
 
@@ -18,6 +19,12 @@ import axios from "axios";
 
 const UsersPage = () => {
   const [users, setUsers] = useState(null);
+  const [globalFilterValue, setGlobalFilterValue] = useState("");
+
+  const [filters, setFilters] = useState(null);
+  // const [filters, setFilters] = useState({
+  //   global: { value: null, matchMode: FilterMatchMode.CONTAINS },
+  // });
 
   const getUsers = async () => {
     try {
@@ -43,15 +50,33 @@ const UsersPage = () => {
 
   useEffect(() => {
     getUsers();
+    initFilters();
   }, []);
+
+  const initFilters = () => {
+    setFilters({
+      global: { value: null, matchMode: FilterMatchMode.CONTAINS },
+    });
+    setGlobalFilterValue("");
+  };
 
   const onRowEditComplete = (e) => {
     let _users = [...users];
     let { newData, index } = e;
-    console.log(newData);
+
     updateUser(newData);
     _users[index] = newData;
     setUsers(_users);
+  };
+
+  const onGlobalFilterChange = (e) => {
+    const value = e.target.value;
+    let _filters = { ...filters };
+
+    _filters["global"].value = value;
+
+    setFilters(_filters);
+    setGlobalFilterValue(value);
   };
 
   const textEditor = (options) => {
@@ -73,6 +98,23 @@ const UsersPage = () => {
     return <Button icon="pi pi-trash" onClick={() => deleteRow(rowData.id)} />;
   };
 
+  const renderHeader = () => {
+    return (
+      <div className="flex justify-content-between">
+        <span className="p-input-icon-left">
+          <i className="pi pi-search" />
+          <InputText
+            value={globalFilterValue}
+            onChange={onGlobalFilterChange}
+            placeholder="Keyword Search"
+          />
+        </span>
+      </div>
+    );
+  };
+
+  const header = renderHeader();
+
   return (
     <div className="card p-fluid">
       <DataTable
@@ -80,10 +122,13 @@ const UsersPage = () => {
         editMode="row"
         dataKey="id"
         onRowEditComplete={onRowEditComplete}
+        filterDisplay="row"
+        filters={filters}
+        globalFilterFields={["email", "login", "middle_name"]}
         // tableStyle={{ minWidth: '50rem' }}
         // scrollable
         // scrollHeight="500px"
-        sortField="id"
+        header={header}
         sortOrder={1}
         paginator
         rows={5}
@@ -102,12 +147,19 @@ const UsersPage = () => {
           field="login"
           header="Логин"
           editor={(options) => textEditor(options)}
+          sortable
+          filter
+          filterField="login"
           // style={{ width: '20%' }}
         />
         <Column
           field="email"
           header="Почта"
           editor={(options) => textEditor(options)}
+          sortable
+          filter
+          filterField="email"
+
           // style={{ width: '20%' }}
         />
         {/* <Column
@@ -120,29 +172,34 @@ const UsersPage = () => {
           field="middle_name"
           header="Фамилия"
           editor={(options) => textEditor(options)}
+          sortable
           // style={{ width: '20%' }}
         />
         <Column
           field="first_name"
           header="Имя"
           editor={(options) => textEditor(options)}
+          sortable
           // style={{ width: '20%' }}
         />
         <Column
           field="last_name"
           header="Отчество"
           editor={(options) => textEditor(options)}
+          sortable
           // style={{ width: '20%' }}
         />
         <Column
           field="phone"
           header="Тел."
           editor={(options) => textEditor(options)}
+          sortable
           // style={{ width: '20%' }}
         />
         <Column
           field="status"
           header="Статус"
+          sortable
           //   editor={(options) => textEditor(options)}
           // style={{ width: '20%' }}
         />

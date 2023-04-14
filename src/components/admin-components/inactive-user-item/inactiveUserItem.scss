@@ -15,3 +15,47 @@
 .post__btns {
   margin: 15px;
 }
+
+.accept-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 45px;
+
+  background-color: white;
+  border-radius: 8px;
+  color: white;
+  padding: 0px 5px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  transition-duration: 0.4s;
+  color: black;
+
+  &:hover {
+    background-color: #4caf50;
+    color: white;
+  }
+}
+
+.refuce-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 45px;
+
+  background-color: white;
+  border-radius: 8px;
+  color: white;
+  padding: 0px 5px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  transition-duration: 0.4s;
+  color: black;
+
+  &:hover {
+    background-color: #f50808;
+    color: white;
+  }
+}
