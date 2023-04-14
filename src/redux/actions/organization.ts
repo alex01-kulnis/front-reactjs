@@ -1,8 +1,15 @@
-import { NavigateFunction } from 'react-router-dom';
+import { NavigateFunction } from "react-router-dom";
 
-import { AppThunk } from '../store';
+import { AppThunk } from "../store";
 
-import { organizationService } from '../../service/organization';
+import { organizationService } from "../../service/organization";
+import { Notify } from "../../service/toasts";
+import errorCoverage from "../../error";
+import {
+  EmptyFieldsAction,
+  internalErrorAction,
+  userAlreadyExistAction,
+} from "../../error/actions/user";
 
 export const registerOrgAsync =
   (
@@ -14,20 +21,35 @@ export const registerOrgAsync =
     email: string,
     login: string,
     password: string,
-    navigate: NavigateFunction,
+    navigate: NavigateFunction
   ): AppThunk<void> =>
   async () => {
-    const { data } = await organizationService.registerOrg(
-      organization_name,
-      phone,
-      first_name,
-      middle_name,
-      last_name,
-      email,
-      login,
-      password,
-    );
+    // await organizationService.registerOrg(
+    //   organization_name,
+    //   phone,
+    //   first_name,
+    //   middle_name,
+    //   last_name,
+    //   email,
+    //   login,
+    //   password
+    // );
 
-    console.log('data org', data);
-    navigate('/auth');
+    try {
+      await organizationService.registerOrg(
+        organization_name,
+        phone,
+        first_name,
+        middle_name,
+        last_name,
+        email,
+        login,
+        password
+      );
+      Notify.success("Вы успешно зарегистрированы!");
+      navigate("/auth");
+    } catch (err) {
+      errorCoverage(err, [userAlreadyExistAction, internalErrorAction, EmptyFieldsAction]);
+    }
+    // navigate("/auth");
   };

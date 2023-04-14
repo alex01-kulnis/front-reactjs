@@ -1,21 +1,30 @@
-import { NavigateFunction } from 'react-router-dom';
+import { NavigateFunction } from "react-router-dom";
 
-import { AppThunk } from '../store';
+import { AppThunk } from "../store";
 
-import { internalErrorAction, userAlreadyExistAction } from '../../error/actions/user';
+import {
+  internalErrorAction,
+  userAlreadyExistAction,
+  EmptyFieldsAction,
+} from "../../error/actions/user";
 
-import { userService } from '../../service/user';
-import { Notify } from '../../service/toasts';
-import errorCoverage from '../../error';
+import { userService } from "../../service/user";
+import { Notify } from "../../service/toasts";
+import errorCoverage from "../../error";
 
 export const registerUserAsync =
-  (email: string, name: string, password: string, navigate: NavigateFunction): AppThunk<void> =>
+  (
+    email: string,
+    name: string,
+    password: string,
+    navigate: NavigateFunction
+  ): AppThunk<void> =>
   async () => {
     try {
       await userService.registerUser(email, name, password);
-      Notify.success('Вы успешно зарегистрированы!');
-      navigate('/auth');
+      Notify.success("Вы успешно зарегистрированы!");
+      navigate("/auth");
     } catch (err) {
-      errorCoverage(err, [userAlreadyExistAction, internalErrorAction]);
+      errorCoverage(err, [userAlreadyExistAction, internalErrorAction, EmptyFieldsAction]);
     }
   };

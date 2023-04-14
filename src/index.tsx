@@ -38,7 +38,7 @@ const App = () => {
     <React.StrictMode>
       <Provider store={store}>
         <ToastContainer
-          style={{ width: "500px" }}
+          style={{ width: "600px" }}
           position="top-center"
           newestOnTop
           closeOnClick

@@ -33,17 +33,13 @@ const UserForm: React.FC<UserFormProps> = ({ value }) => {
   };
 
   const onRegisterClick = (e: any) => {
-    e.preventDefault();
+    // e.preventDefault();
     registerUserAsync(email, login, password, navigate);
   };
 
   return (
     <form
-      className={
-        value === 1
-          ? "active-content-block-user-form"
-          : "content-block-user-form"
-      }
+      className={value === 1 ? "active-content-block-user-form" : "content-block-user-form"}
     >
       <div className="block-user-input">
         <div className="block-user-content">
@@ -85,13 +81,12 @@ const UserForm: React.FC<UserFormProps> = ({ value }) => {
               onChange={onPasswordChange}
             />
             <div className="validation">
-              Минимум 8 символов, одна цифра, одна буква в верхнем регистре и
-              одна в нижнем
+              Минимум 8 символов, одна цифра, одна буква в верхнем регистре и одна в нижнем
             </div>
           </div>
         </div>
         <div className="sumbit-user-input">
-          <button onClick={onRegisterClick}>Зарегистрироваться</button>
+          <input type="submit" value="Зарегистрироваться" onClick={onRegisterClick} />
         </div>
       </div>
     </form>

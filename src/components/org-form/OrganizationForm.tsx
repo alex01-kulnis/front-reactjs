@@ -1,12 +1,12 @@
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import React from "react";
+import { useNavigate } from "react-router-dom";
 
-import { useFieldState } from '../../hooks/useFieldState';
-import { InputChangeHandler } from '../../types/types';
+import { useFieldState } from "../../hooks/useFieldState";
+import { InputChangeHandler } from "../../types/types";
 
-import './organizationForm.scss';
-import '../UI/valid-input.scss';
-import { useActions } from '../../hooks/useActions';
+import "./organizationForm.scss";
+import "../UI/valid-input.scss";
+import { useActions } from "../../hooks/useActions";
 
 type OrganizationFormProps = {
   value: number;
@@ -56,12 +56,25 @@ const OrganizationForm: React.FC<OrganizationFormProps> = ({ value }) => {
     setPassword(e.target.value);
   };
 
-  const onRegisterClick = () => {
-    registerOrgAsync(organizationName, email, phone, firstName, middleName, lastName, login, password, navigate);
+  const onRegisterClick = (e: any) => {
+    e.preventDefault();
+    registerOrgAsync(
+      organizationName,
+      email,
+      phone,
+      firstName,
+      middleName,
+      lastName,
+      login,
+      password,
+      navigate
+    );
   };
 
   return (
-    <form className={value === 2 ? 'active-content-block-org-form' : 'content-block-org-form'}>
+    <form
+      className={value === 2 ? "active-content-block-org-form" : "content-block-org-form"}
+    >
       <div className="block-org-input">
         <div className="block-org-content">
           <div className="input-field">
@@ -185,7 +198,11 @@ const OrganizationForm: React.FC<OrganizationFormProps> = ({ value }) => {
           </div> */}
         </div>
         <div className="sumbit-input">
-          <input type="submit" value="Отправить на рассмотрение" onClick={onRegisterClick} />
+          <input
+            type="submit"
+            value="Отправить на рассмотрение"
+            onClick={onRegisterClick}
+          />
         </div>
       </div>
     </form>
