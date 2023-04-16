@@ -1,12 +1,21 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 
+import { Context } from "../../..";
 import robotSvg from "../../../assets/robot-logo.svg";
 // import personSvg from '../../assets/person.png';
 
 import "./adminHeader.scss";
 
 const AdminHeader: React.FC = () => {
+  const { user } = useContext(Context);
+  const exist = () => {
+    // user.setUser({});
+    user.setRole("");
+    localStorage.removeItem("token");
+    localStorage.removeItem("role");
+  };
+
   return (
     <header className="header-admin">
       <Link to="/admin">
@@ -25,7 +34,9 @@ const AdminHeader: React.FC = () => {
           <div className="header-admin__inscription">Заявки</div>
         </Link>
         <Link to="/">
-          <div className="header-admin__inscription">Выйти</div>
+          <div className="header-admin__inscription" onClick={exist}>
+            Выйти
+          </div>
         </Link>
       </div>
     </header>

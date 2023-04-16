@@ -1,14 +1,23 @@
+import { UserActionTypes } from "../../types/User";
+
 const initialState: any = {
-  isAppLoading: true,
+  // isAppLoading: true,
   isAuth: false,
   user: null,
-  userSubs: [],
-  isPageLoading: true,
-  foreignUser: null,
-  userError: '',
+  role: "",
+  // userSubs: [],
+  // isPageLoading: true,
+  // foreignUser: null,
+  // userError: '',
 };
 const userReducer = (state = initialState, action: any): any => {
   switch (action.type) {
+    case UserActionTypes.SET_USER_DATA:
+      return {
+        ...state,
+        isAuth: true,
+        user: { ...action.payload },
+      };
     // case 'sad':
     //   return {
     //     ...state,

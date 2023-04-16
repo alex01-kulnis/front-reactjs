@@ -1,55 +1,65 @@
-import React, { useEffect } from "react";
+import { createContext } from "react";
 import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
-import { BrowserRouter } from "react-router-dom";
-import { ToastContainer } from "react-toastify";
+// import { BrowserRouter } from "react-router-dom";
+// import { ToastContainer } from "react-toastify";
+// import { observer } from "mobx-react-lite";
 
-import AdminApp from "./app/AdminApp";
-import OrganizationApp from "./app/OrganizationApp";
-import UserApp from "./app/UserApp";
+import UserStore from "./store-mobx/UserStore";
+// import AdminApp from "./app/AdminApp";
+// import OrganizationApp from "./app/OrganizationApp";
+// import UserApp from "./app/UserApp";
 import store from "./redux/store/index";
 
 import "react-toastify/dist/ReactToastify.css";
 import "./scss/app.scss";
+import App from "./app";
+import React from "react";
 
-const App = () => {
-  // useEffect(() => {
-  //   if (window.localStorage.getItem('token') !== null) {
-  //     // user.setUser(user);
-  //     // user.setIsAuth(true);
-  //   }
-  // });
-  const getRoles = (props: string) => {
-    const role = props;
+export const Context = createContext(null);
 
-    if (role === "admin") {
-      return <AdminApp />;
-    }
+// const App = () => {
+//   // const { user } = useContext(Context);
+//   // const { isAuth, role } = useTypedSelector((state) => state.userStore);
+//   // useEffect(() => {
+//   //   if (window.localStorage.getItem("token") !== null) {
+//   //     user.setUser(user);
+//   //     // user.setIsAuth(true);
+//   //   }
+//   // });
+//   const getRoles = (props: string) => {
+//     const role = props;
 
-    if (role === "organization") {
-      return <OrganizationApp />;
-    }
+//     if (role === "admin") {
+//       return <AdminApp />;
+//     }
 
-    if (role === "user") {
-      return <UserApp />;
-    }
-  };
-  return (
-    <React.StrictMode>
+//     if (role === "organization") {
+//       return <OrganizationApp />;
+//     }
+
+//     if (role === "user") {
+//       return <UserApp />;
+//     }
+//   };
+//   return (
+//     <Context.Provider value={{ user: new UserStore() }}>
+//       <Provider store={store}>
+//         <App />
+//       </Provider>
+//     </Context.Provider>
+//   );
+// };
+
+// ReactDOM.render(<App />, document.getElementById("root"));
+
+ReactDOM.render(
+  <React.StrictMode>
+    <Context.Provider value={{ user: new UserStore() }}>
       <Provider store={store}>
-        <ToastContainer
-          style={{ width: "600px" }}
-          position="top-center"
-          newestOnTop
-          closeOnClick
-          autoClose={5000}
-          hideProgressBar={false}
-          pauseOnHover
-        />
-        <BrowserRouter>{getRoles("user")}</BrowserRouter>
+        <App />
       </Provider>
-    </React.StrictMode>
-  );
-};
-
-ReactDOM.render(<App />, document.getElementById("root"));
+    </Context.Provider>
+  </React.StrictMode>,
+  document.getElementById("root")
+);
