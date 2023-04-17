@@ -57,14 +57,14 @@ const OrganizationForm: React.FC<OrganizationFormProps> = ({ value }) => {
   };
 
   const onRegisterClick = (e: any) => {
-    e.preventDefault();
+    // e.preventDefault();
     registerOrgAsync(
       organizationName,
-      email,
       phone,
       firstName,
       middleName,
       lastName,
+      email,
       login,
       password,
       navigate
@@ -159,8 +159,8 @@ const OrganizationForm: React.FC<OrganizationFormProps> = ({ value }) => {
             <label htmlFor="email">Логин:</label>
             <input
               type="text"
-              minLength={6}
-              placeholder="kulnis7"
+              minLength={8}
+              placeholder="kulnis71"
               required
               title="Минимум 8 символов"
               value={login}

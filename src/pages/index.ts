@@ -5,6 +5,8 @@ import UsersPage from "./admin-pages/users-page/UsersPage";
 import ApplicationsPage from "./admin-pages/applications-page/ApplicationsPage";
 import AuthPage from "./user-pages/auth-page/AuthPage";
 import CabinetPage from "./organization-pages/cabinet-page/CabinetPage";
+import CreateSectionPage from "./organization-pages/create-section-page/CreateSectionPage";
+import SectionPage from "./organization-pages/section-page/SectionPage";
 
 export {
   MainPage,
@@ -14,4 +16,6 @@ export {
   ApplicationsPage,
   AuthPage,
   CabinetPage,
+  CreateSectionPage,
+  SectionPage,
 };

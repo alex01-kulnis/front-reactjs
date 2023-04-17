@@ -22,21 +22,16 @@ const AuthPage: React.FC = () => {
   };
 
   const onAuthClick = async (e: any) => {
-    e.preventDefault();
+    // e.preventDefault();
     // registerUserAsync(email, login, password, navigate);
 
     try {
       const res = await axios.post("http://localhost:3001/api/login", { login, password });
-      console.log(res.data);
-
       localStorage.setItem("token", res.data.token);
       localStorage.setItem("role", res.data.role);
       alert("ура");
-      // user.setUser(user);
-      console.log(res.data.role);
       user.setRole(res.data.role);
       const role = user.getRole();
-      console.log("role", role);
 
       // console.log("res", res.data);
     } catch (e) {

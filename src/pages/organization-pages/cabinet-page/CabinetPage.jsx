@@ -88,9 +88,19 @@ const CabinetPage = () => {
       );
     } catch (error) {}
   };
+
+  const clear = async () => {
+    setOrganizationName("");
+    setEmail("");
+    setPhone("");
+    setMiddleName("");
+    setFirstName("");
+    setLastName("");
+    setLogin("");
+  };
   return (
     <div className="block-org-cabinet">
-      <div className="block-form-cabinet">
+      <form className="block-form-cabinet">
         <div className="form-cabinet-content">
           <div className="input-field">
             <label htmlFor="NameOrg">Название организации:</label>
@@ -183,7 +193,7 @@ const CabinetPage = () => {
             />
             <div className="validation">Минимум 8 символов</div>
           </div>
-          <div className="input-field">
+          {/* <div className="input-field">
             <label htmlFor="password">Пароль:</label>
             <input
               type="password"
@@ -197,13 +207,13 @@ const CabinetPage = () => {
             <div className="validation">
               Минимум 8 символов, одна цифра, одна буква в верхнем регистре и одна в нижнем
             </div>
-          </div>
+          </div> */}
         </div>
         <div className="actions-button">
-          <input className="clear-button" value="Очистить" />
+          <input type="button" className="clear-button" value="Очистить" onClick={clear} />
           <input type="submit" value="Сохранить" onClick={save} />
         </div>
-      </div>
+      </form>
     </div>
   );
 };

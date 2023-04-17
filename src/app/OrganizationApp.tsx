@@ -1,7 +1,7 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
 import { OrgHeader } from "../components";
-import { CabinetPage } from "../pages";
+import { CabinetPage, CreateSectionPage, SectionPage } from "../pages";
 
 const OrganizationApp: React.FC = () => {
   return (
@@ -10,7 +10,8 @@ const OrganizationApp: React.FC = () => {
       <Routes>
         <Route path="/org/users" element={<div />} />
         <Route path="/org/cabinet" element={<CabinetPage />} />
-        <Route path="/org/auth" element={<div />} />
+        <Route path="/org/create-section" element={<CreateSectionPage />} />
+        <Route path="/org/section" element={<SectionPage />} />
       </Routes>
     </>
   );

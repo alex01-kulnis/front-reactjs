@@ -11,11 +11,11 @@ const OrgHeader: React.FC = () => {
   const { user } = useContext(Context);
 
   const exist = () => {
-    // user.setUser({});
     user.setRole("");
     localStorage.removeItem("token");
     localStorage.removeItem("role");
   };
+
   return (
     <header className="header-org">
       <Link to="/">
@@ -27,11 +27,13 @@ const OrgHeader: React.FC = () => {
         </div>
       </Link>
       <div className="header-org__nav">
-        <div className="header-org__inscription">Главная</div>
         <Link to="/org/cabinet">
           <div className="header-org__inscription">Личный кабинет</div>
         </Link>
-        <Link to="/auth">
+        <Link to="/org/create-section">
+          <div className="header-org__inscription">Создать секцию</div>
+        </Link>
+        <Link to="/org/section">
           <div className="header-org__inscription">Секции</div>
         </Link>
         <Link to="/">

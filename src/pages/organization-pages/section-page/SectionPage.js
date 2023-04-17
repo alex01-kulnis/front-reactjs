@@ -16,20 +16,24 @@ import "primereact/resources/primereact.min.css";
 import "primeicons/primeicons.css";
 
 import axios from "axios";
+import { getAuthHeaders } from "../../../service/api";
 
-const UsersPage = () => {
+const SectionPage = () => {
   const [users, setUsers] = useState(null);
   const [globalFilterValue, setGlobalFilterValue] = useState("");
 
-  // const [filters, setFilters] = useState(null);
-  const [filters, setFilters] = useState({
-    global: { value: null, matchMode: FilterMatchMode.CONTAINS },
-  });
+  const [filters, setFilters] = useState(null);
+  // const [filters, setFilters] = useState({
+  //   global: { value: null, matchMode: FilterMatchMode.CONTAINS },
+  // });
 
   const getUsers = async () => {
     try {
-      const res = await axios.get("http://localhost:3001/api/users");
-      setUsers(res.data);
+      const res = await axios.get(
+        "http://localhost:3001/api/users/section-by-org",
+        getAuthHeaders()
+      );
+      setUsers(res.data.section);
     } catch (error) {}
   };
 
@@ -54,7 +58,9 @@ const UsersPage = () => {
   }, []);
 
   const initFilters = () => {
-    setFilters("");
+    setFilters({
+      global: { value: null, matchMode: FilterMatchMode.CONTAINS },
+    });
     setGlobalFilterValue("");
   };
 
@@ -120,9 +126,9 @@ const UsersPage = () => {
         editMode="row"
         dataKey="id"
         onRowEditComplete={onRowEditComplete}
-        filterDisplay="row"
+        // filterDisplay="row"
         filters={filters}
-        globalFilterFields={["email", "login", "middle_name"]}
+        globalFilterFields={["name", "category", "years"]}
         // tableStyle={{ minWidth: '50rem' }}
         // scrollable
         // scrollHeight="500px"
@@ -139,66 +145,84 @@ const UsersPage = () => {
           header="id"
           editor={(options) => textEditor(options)}
           sortable
-          // style={{ width: '20%' }}
+          style={{ width: "200px" }}
         />
         <Column
-          field="login"
-          header="Логин"
+          field="name"
+          header="Название"
           editor={(options) => textEditor(options)}
           sortable
           filter
-          filterField="login"
-          // style={{ width: '20%' }}
+          filterField="name"
+          //   style={{ width: "200px" }}
         />
         <Column
-          field="email"
-          header="Почта"
+          field="category"
+          header="Категория"
           editor={(options) => textEditor(options)}
           sortable
           filter
-          filterField="email"
+          filterField="category"
 
           // style={{ width: '20%' }}
         />
-        {/* <Column
-          field="password"
-          header="Пароль"
-          editor={(options) => textEditor(options)}
-          // style={{ width: '20%' }}
-        /> */}
         <Column
-          field="middle_name"
-          header="Фамилия"
-          editor={(options) => textEditor(options)}
-          sortable
-          filter
-          filterField="middle_name"
-          // style={{ width: '20%' }}
-        />
-        <Column
-          field="first_name"
-          header="Имя"
+          field="years"
+          header="Возраст"
           editor={(options) => textEditor(options)}
           sortable
           // style={{ width: '20%' }}
         />
         <Column
-          field="last_name"
-          header="Отчество"
+          field="monday"
+          header="Пн."
           editor={(options) => textEditor(options)}
           sortable
           // style={{ width: '20%' }}
         />
         <Column
-          field="phone"
-          header="Тел."
+          field="tuesday"
+          header="Вт."
           editor={(options) => textEditor(options)}
           sortable
           // style={{ width: '20%' }}
         />
         <Column
-          field="status"
-          header="Статус"
+          field="wednesday"
+          header="Ср."
+          editor={(options) => textEditor(options)}
+          sortable
+          //   editor={(options) => textEditor(options)}
+          // style={{ width: '20%' }}
+        />
+        <Column
+          field="thursday"
+          header="Чт."
+          editor={(options) => textEditor(options)}
+          sortable
+          //   editor={(options) => textEditor(options)}
+          // style={{ width: '20%' }}
+        />
+        <Column
+          field="friday"
+          header="Пт."
+          editor={(options) => textEditor(options)}
+          sortable
+          //   editor={(options) => textEditor(options)}
+          // style={{ width: '20%' }}
+        />
+        <Column
+          field="saturday"
+          header="Сб."
+          editor={(options) => textEditor(options)}
+          sortable
+          //   editor={(options) => textEditor(options)}
+          // style={{ width: '20%' }}
+        />
+        <Column
+          field="sunday"
+          header="Вс"
+          editor={(options) => textEditor(options)}
           sortable
           //   editor={(options) => textEditor(options)}
           // style={{ width: '20%' }}
@@ -214,4 +238,4 @@ const UsersPage = () => {
   );
 };
 
-export default UsersPage;
+export default SectionPage;
