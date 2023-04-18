@@ -7,6 +7,8 @@ import AuthPage from "./user-pages/auth-page/AuthPage";
 import CabinetPage from "./organization-pages/cabinet-page/CabinetPage";
 import CreateSectionPage from "./organization-pages/create-section-page/CreateSectionPage";
 import SectionPage from "./organization-pages/section-page/SectionPage";
+import MainSectionPage from "./admin-pages/main-section-page/MainSectionPage";
+import GeneralSectionPage from "./general-pages/GeneralSectionPage";
 
 export {
   MainPage,
@@ -18,4 +20,6 @@ export {
   CabinetPage,
   CreateSectionPage,
   SectionPage,
+  MainSectionPage,
+  GeneralSectionPage,
 };

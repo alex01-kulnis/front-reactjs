@@ -6,17 +6,12 @@ import { FilterMatchMode, FilterOperator } from "primereact/api";
 import { InputText } from "primereact/inputtext";
 import { Button } from "primereact/button";
 
-//theme
 import "primereact/resources/themes/lara-light-indigo/theme.css";
-
-//core
 import "primereact/resources/primereact.min.css";
-import "./sectionPage.scss";
-//icons
 import "primeicons/primeicons.css";
+import "./mainSectionPage.scss";
 
 import axios from "axios";
-import { getAuthHeaders } from "../../../service/api";
 
 const SectionPage = () => {
   const [sections, setSections] = useState(null);
@@ -29,11 +24,9 @@ const SectionPage = () => {
 
   const getSections = async () => {
     try {
-      const res = await axios.get(
-        "http://localhost:3001/api/users/section-by-org",
-        getAuthHeaders()
-      );
-      setSections(res.data.section);
+      const res = await axios.get("http://localhost:3001/api/section");
+      console.log(res);
+      setSections(res.data);
     } catch (error) {}
   };
 
@@ -50,7 +43,6 @@ const SectionPage = () => {
         `http://localhost:3001/api/section/${newData.id}`,
         newData
       );
-      console.log(res);
     } catch (error) {}
   };
 

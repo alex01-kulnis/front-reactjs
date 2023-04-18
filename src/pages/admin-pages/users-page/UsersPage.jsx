@@ -29,6 +29,7 @@ const UsersPage = () => {
   const getUsers = async () => {
     try {
       const res = await axios.get("http://localhost:3001/api/users");
+      console.log(res.data);
       setUsers(res.data);
     } catch (error) {}
   };
@@ -204,8 +205,15 @@ const UsersPage = () => {
           // style={{ width: '20%' }}
         />
         <Column
+          field="role.role"
+          header="Роль"
+          sortable
+          editor={(options) => textEditor(options)}
+          // style={{ width: '20%' }}
+        />
+        <Column
           rowEditor
-          headerStyle={{ width: "10%", minWidth: "50px" }}
+          // headerStyle={{ width: "10%", minWidth: "50px" }}
           bodyStyle={{ textAlign: "center" }}
         />
         <Column body={actionBodyTemplate} />

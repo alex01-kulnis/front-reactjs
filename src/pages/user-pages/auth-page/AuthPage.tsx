@@ -22,7 +22,7 @@ const AuthPage: React.FC = () => {
   };
 
   const onAuthClick = async (e: any) => {
-    // e.preventDefault();
+    e.preventDefault();
     // registerUserAsync(email, login, password, navigate);
 
     try {
@@ -31,8 +31,6 @@ const AuthPage: React.FC = () => {
       localStorage.setItem("role", res.data.role);
       alert("ура");
       user.setRole(res.data.role);
-      const role = user.getRole();
-
       // console.log("res", res.data);
     } catch (e) {
       alert(e.response.data.message);

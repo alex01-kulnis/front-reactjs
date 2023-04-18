@@ -18,7 +18,9 @@ const UserHeader: React.FC = () => {
         </div>
       </Link>
       <div className="header-user__nav">
-        <div className="header-user__inscription">Главная</div>
+        <Link to="/">
+          <div className="header-user__inscription">Главная</div>
+        </Link>
         <div className="header-user__inscription">Подписки</div>
         <Link to="/auth">
           <div className="header-user__inscription">Войти</div>

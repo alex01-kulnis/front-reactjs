@@ -30,6 +30,9 @@ const AdminHeader: React.FC = () => {
         <Link to="/admin/users">
           <div className="header-admin__inscription">Пользователи</div>
         </Link>
+        <Link to="/admin/sections">
+          <div className="header-admin__inscription">Секции</div>
+        </Link>
         <Link to="/admin/appplications">
           <div className="header-admin__inscription">Заявки</div>
         </Link>

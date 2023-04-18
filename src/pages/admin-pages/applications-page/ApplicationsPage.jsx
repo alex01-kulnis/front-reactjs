@@ -1,23 +1,27 @@
 /* eslint-disable */
-import React, { useEffect, useState } from "react";
-
-import "./applicationPage.scss";
+import { useEffect, useState } from "react";
 import axios from "axios";
+import { observer } from "mobx-react-lite";
+
 import { InactiveUserItem } from "../../../components";
 
-const ApplicationsPage = () => {
+import "./applicationPage.scss";
+
+const ApplicationsPage = observer(() => {
   const [users, setUsers] = useState([]);
 
   const getUsers = async () => {
     try {
       const res = await axios.get("http://localhost:3001/api/users/inactive");
       console.log(res);
-      setUsers(res.data);
+      return res.data;
+      // setUsers(res.data);
     } catch (error) {}
   };
 
   useEffect(() => {
-    getUsers();
+    // getUsers();
+    getUsers().then((data) => setUsers(data));
   }, []);
 
   return (
@@ -27,6 +31,6 @@ const ApplicationsPage = () => {
       ))}
     </div>
   );
-};
+});
 
 export default ApplicationsPage;

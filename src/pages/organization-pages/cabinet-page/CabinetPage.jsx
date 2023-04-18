@@ -1,5 +1,5 @@
-import React, { useEffect } from "react";
 import axios from "axios";
+import { useEffect } from "react";
 
 import { getAuthHeaders } from "../../../service/api";
 import { useFieldState } from "../../../hooks/useFieldState";
@@ -51,6 +51,7 @@ const CabinetPage = () => {
   const getUser = async () => {
     try {
       const res = await axios.get(`http://localhost:3001/api/users/user`, getAuthHeaders());
+      console.log(res.data);
       setOrganizationName(res.data[0].organization_name);
       setEmail(res.data[0].email);
       setPhone(res.data[0].phone);
@@ -65,13 +66,13 @@ const CabinetPage = () => {
     getUser();
   }, []);
 
-  const save = async () => {
+  const save = async (e) => {
+    e.preventDefault();
     try {
       const organization_name = organizationName;
       const middle_name = middleName;
       const first_name = firstName;
       const last_name = lastName;
-      // const login = login;
       const res = await axios.patch(
         `http://localhost:3001/api/users`,
         {
@@ -86,6 +87,7 @@ const CabinetPage = () => {
         },
         getAuthHeaders()
       );
+      console.log(res);
     } catch (error) {}
   };
 
@@ -98,9 +100,10 @@ const CabinetPage = () => {
     setLastName("");
     setLogin("");
   };
+
   return (
-    <div className="block-org-cabinet">
-      <form className="block-form-cabinet">
+    <form className="block-org-cabinet">
+      <div className="block-form-cabinet">
         <div className="form-cabinet-content">
           <div className="input-field">
             <label htmlFor="NameOrg">Название организации:</label>
@@ -185,7 +188,7 @@ const CabinetPage = () => {
             <input
               type="text"
               minLength={8}
-              placeholder="kulnis7"
+              placeholder="kulnis71"
               required
               title="Минимум 8 символов"
               value={login}
@@ -198,8 +201,8 @@ const CabinetPage = () => {
             <input
               type="password"
               placeholder="123kulniS"
-              required
               pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*"
+              // required
               title="Минимум 8 символов, одна цифра, одна буква в верхнем регистре и одна в нижнем"
               value={password}
               onChange={onPasswordChange}
@@ -213,8 +216,8 @@ const CabinetPage = () => {
           <input type="button" className="clear-button" value="Очистить" onClick={clear} />
           <input type="submit" value="Сохранить" onClick={save} />
         </div>
-      </form>
-    </div>
+      </div>
+    </form>
   );
 };
 

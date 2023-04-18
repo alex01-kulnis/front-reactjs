@@ -3,19 +3,26 @@ import axios from "axios";
 import "./inactiveUserItem.scss";
 
 const InactiveUserItem = ({ users }) => {
-  const refuse = async () => {
+  if (!users) {
+    return <h1 style={{ textAlign: "center", margin: "20px" }}>Заявок нет!</h1>;
+  }
+  const refuse = async (e) => {
+    // e.preventDefault();
     try {
       const res = await axios.delete(`http://localhost:3001/api/users/${users.id}`);
+      console.log(res);
     } catch (e) {
       alert(e.response.data.message);
     }
   };
 
-  const accept = async () => {
+  const accept = async (e) => {
+    // e.preventDefault();
     try {
       const res = await axios.patch(`http://localhost:3001/api/users/${users.id}`, {
         status: "ACTIVE",
       });
+      console.log(res);
     } catch (e) {
       alert(e.response.data.message);
     }

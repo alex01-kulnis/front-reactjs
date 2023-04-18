@@ -1,7 +1,7 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
 
-import { ApplicationsPage, UsersPage } from "../pages";
+import { ApplicationsPage, MainSectionPage, UsersPage } from "../pages";
 import { AdminHeader } from "../components";
 
 const AdminApp: React.FC = () => {
@@ -10,6 +10,7 @@ const AdminApp: React.FC = () => {
       <AdminHeader />
       <Routes>
         <Route path="/admin/users" element={<UsersPage />} />
+        <Route path="/admin/sections" element={<MainSectionPage />} />
         <Route path="/admin/appplications" element={<ApplicationsPage />} />
         <Route path="/admin/auth" element={<div />} />
       </Routes>
