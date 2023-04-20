@@ -1,10 +1,12 @@
-import { observer } from "mobx-react-lite";
 import { useEffect, useContext } from "react";
 import { BrowserRouter } from "react-router-dom";
+import { observer } from "mobx-react-lite";
+import { ToastContainer } from "react-toastify";
+
 import AdminApp from "./app/AdminApp";
 import OrganizationApp from "./app/OrganizationApp";
 import UserApp from "./app/UserApp";
-import { ToastContainer } from "react-toastify";
+
 import "react-toastify/dist/ReactToastify.css";
 
 import { Context } from "./index";
@@ -15,8 +17,10 @@ const App = observer(() => {
   useEffect(() => {
     if (window.localStorage.getItem("role") !== null) {
       user.setRole(window.localStorage.getItem("role"));
+      user.setIsAuth(true);
     } else {
       user.setRole("1");
+      user.setIsAuth(false);
     }
   });
 
@@ -38,8 +42,8 @@ const App = observer(() => {
   return (
     <BrowserRouter>
       <ToastContainer
-        style={{ width: "600px" }}
-        position="top-center"
+        style={{ width: "600px", height: "45px" }}
+        position="top-right"
         newestOnTop
         closeOnClick
         autoClose={5000}

@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import axios from "axios";
 
+import { Notify } from "../../../service/toasts";
 import { Context } from "../../..";
 import { useFieldState } from "../../../hooks/useFieldState";
 import { InputChangeHandler } from "../../../types/types";
@@ -29,7 +30,7 @@ const AuthPage: React.FC = () => {
       const res = await axios.post("http://localhost:3001/api/login", { login, password });
       localStorage.setItem("token", res.data.token);
       localStorage.setItem("role", res.data.role);
-      alert("ура");
+      Notify.success("Авторизация прошла успешно!");
       user.setRole(res.data.role);
       // console.log("res", res.data);
     } catch (e) {

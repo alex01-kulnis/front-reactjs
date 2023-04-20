@@ -18,9 +18,6 @@ const SectionPage = () => {
   const [globalFilterValue, setGlobalFilterValue] = useState("");
 
   const [filters, setFilters] = useState(null);
-  // const [filters, setFilters] = useState({
-  //   global: { value: null, matchMode: FilterMatchMode.CONTAINS },
-  // });
 
   const getSections = async () => {
     try {
@@ -61,7 +58,6 @@ const SectionPage = () => {
   const onRowEditComplete = (e) => {
     let _sections = [...sections];
     let { newData, index } = e;
-    console.log(newData);
     updateSection(newData);
     _sections[index] = newData;
     setSections(_sections);
@@ -80,6 +76,7 @@ const SectionPage = () => {
   const textEditor = (options) => {
     return (
       <InputText
+        // keyfilter="int"
         type="text"
         value={options.value}
         onChange={(e) => options.editorCallback(e.target.value)}
@@ -122,12 +119,8 @@ const SectionPage = () => {
             editMode="row"
             dataKey="id"
             onRowEditComplete={onRowEditComplete}
-            // filterDisplay="row"
             filters={filters}
             globalFilterFields={["name", "category", "years"]}
-            // tableStyle={{ minWidth: '50rem' }}
-            // scrollable
-            // scrollHeight="500px"
             header={header}
             sortOrder={1}
             paginator
@@ -150,7 +143,6 @@ const SectionPage = () => {
               sortable
               filter
               filterField="name"
-              //   style={{ width: "200px" }}
             />
             <Column
               field="category"
@@ -159,15 +151,13 @@ const SectionPage = () => {
               sortable
               filter
               filterField="category"
-
-              // style={{ width: '20%' }}
             />
             <Column
               field="years"
               header="Возраст"
               editor={(options) => textEditor(options)}
               sortable
-              // style={{ width: '20%' }}
+              keyfilter="int"
             />
             <Column
               field="monday"
@@ -181,22 +171,18 @@ const SectionPage = () => {
               header="Вт."
               editor={(options) => textEditor(options)}
               sortable
-              // style={{ width: '20%' }}
             />
             <Column
               field="wednesday"
               header="Ср."
               editor={(options) => textEditor(options)}
               sortable
-              //   editor={(options) => textEditor(options)}
-              // style={{ width: '20%' }}
             />
             <Column
               field="thursday"
               header="Чт."
               editor={(options) => textEditor(options)}
               sortable
-              //   editor={(options) => textEditor(options)}
               // style={{ width: '20%' }}
             />
             <Column
@@ -204,7 +190,6 @@ const SectionPage = () => {
               header="Пт."
               editor={(options) => textEditor(options)}
               sortable
-              //   editor={(options) => textEditor(options)}
               // style={{ width: '20%' }}
             />
             <Column

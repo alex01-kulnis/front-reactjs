@@ -15,12 +15,10 @@ const ApplicationsPage = observer(() => {
       const res = await axios.get("http://localhost:3001/api/users/inactive");
       console.log(res);
       return res.data;
-      // setUsers(res.data);
     } catch (error) {}
   };
 
   useEffect(() => {
-    // getUsers();
     getUsers().then((data) => setUsers(data));
   }, []);
 
