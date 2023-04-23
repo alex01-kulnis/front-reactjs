@@ -1,13 +1,18 @@
 import axios from "axios";
-import { useEffect } from "react";
+import { useEffect, useContext } from "react";
+import { useNavigate } from "react-router-dom";
 
 import { getAuthHeaders } from "../../../service/api";
 import { useFieldState } from "../../../hooks/useFieldState";
+import { Context } from "../../../index";
 
 import "./cabinetPage.scss";
 import "../../../components/UI/valid-input.scss";
 
 const CabinetPage = () => {
+  const navigate = useNavigate();
+  const { user } = useContext(Context);
+
   const [organizationName, setOrganizationName] = useFieldState();
   const onOrganizationNameChange = (e) => {
     setOrganizationName(e.target.value);
@@ -99,6 +104,17 @@ const CabinetPage = () => {
     setFirstName("");
     setLastName("");
     setLogin("");
+  };
+
+  const deleteProfile = async () => {
+    try {
+      const res = await axios.delete(`http://localhost:3001/api/users`, getAuthHeaders());
+      user.setRole("");
+      localStorage.removeItem("token");
+      localStorage.removeItem("role");
+      console.log(res);
+      navigate("/");
+    } catch (error) {}
   };
 
   return (
@@ -213,6 +229,12 @@ const CabinetPage = () => {
           </div> */}
         </div>
         <div className="actions-button">
+          <input
+            type="button"
+            className="del-button"
+            value="Удалить профиль"
+            onClick={deleteProfile}
+          />
           <input type="button" className="clear-button" value="Очистить" onClick={clear} />
           <input type="submit" value="Сохранить" onClick={save} />
         </div>

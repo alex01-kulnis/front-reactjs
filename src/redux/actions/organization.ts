@@ -46,7 +46,7 @@ export const registerOrgAsync =
         login,
         password
       );
-      Notify.success("Вы успешно зарегистрированы!");
+      Notify.success("Ваша заявка отправлена, обратотка будет в течени 24 часов!");
       navigate("/auth");
     } catch (err) {
       errorCoverage(err, [userAlreadyExistAction, internalErrorAction, EmptyFieldsAction]);

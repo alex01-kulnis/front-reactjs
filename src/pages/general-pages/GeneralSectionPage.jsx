@@ -25,10 +25,12 @@ const GeneralSectionPage = observer(() => {
   }, []);
 
   return (
-    <div className="main-sections">
-      {sections.map((sections) => (
-        <SectionItem sections={sections} key={sections.id} />
-      ))}
+    <div className="block-section">
+      <div className="main-sections">
+        {sections.map((sections) => (
+          <SectionItem sections={sections} key={sections.id} />
+        ))}
+      </div>
     </div>
   );
 });

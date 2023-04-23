@@ -60,5 +60,12 @@
         color: white;
       }
     }
+
+    .del-button {
+      &:hover {
+        background-color: red;
+        color: white;
+      }
+    }
   }
 }
