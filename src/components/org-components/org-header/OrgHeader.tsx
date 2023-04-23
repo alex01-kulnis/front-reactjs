@@ -27,6 +27,9 @@ const OrgHeader: React.FC = () => {
         </div>
       </Link>
       <div className="header-org__nav">
+        <Link to="/">
+          <div className="header-org__inscription">Главная</div>
+        </Link>
         <Link to="/org/cabinet">
           <div className="header-org__inscription">Личный кабинет</div>
         </Link>

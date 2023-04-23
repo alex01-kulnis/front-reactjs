@@ -18,7 +18,7 @@ const AdminHeader: React.FC = () => {
 
   return (
     <header className="header-admin">
-      <Link to="/admin">
+      <Link to="/">
         <div className="header-admin__logo">
           <img width="36" src={robotSvg} alt="logo" />
           <div>
@@ -27,6 +27,9 @@ const AdminHeader: React.FC = () => {
         </div>
       </Link>
       <div className="header-admin__nav">
+        <Link to="/">
+          <div className="header-admin__inscription">Главная</div>
+        </Link>
         <Link to="/admin/users">
           <div className="header-admin__inscription">Пользователи</div>
         </Link>
