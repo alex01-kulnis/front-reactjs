@@ -144,20 +144,20 @@ const SectionPage = () => {
             paginatorTemplate="RowsPerPageDropdown FirstPageLink PrevPageLink CurrentPageReport NextPageLink LastPageLink"
             currentPageReportTemplate="{first} to {last} of {totalRecords}"
           >
-            <Column
+            {/* <Column
               field="id"
               header="id"
               editor={(options) => textEditor(options)}
               sortable
-              style={{ width: "200px" }}
-            />
+              // style={{ width: "200px" }}
+            /> */}
             <Column
               field="name"
               header="Название"
               editor={(options) => textEditor(options)}
               sortable
-              filter
-              filterField="name"
+              // filter
+              // filterField="name"
               //   style={{ width: "200px" }}
             />
             <Column
@@ -165,8 +165,8 @@ const SectionPage = () => {
               header="Категория"
               editor={(options) => textEditor(options)}
               sortable
-              filter
-              filterField="category"
+              // filter
+              // filterField="category"
 
               // style={{ width: '20%' }}
             />
@@ -205,7 +205,7 @@ const SectionPage = () => {
               editor={(options) => textEditor(options)}
               sortable
               //   editor={(options) => textEditor(options)}
-              // style={{ width: '20%' }}
+              // style={{ width: "20%" }}
             />
             <Column
               field="friday"
@@ -226,6 +226,22 @@ const SectionPage = () => {
             <Column
               field="sunday"
               header="Вс"
+              editor={(options) => textEditor(options)}
+              sortable
+              //   editor={(options) => textEditor(options)}
+              // style={{ width: '20%' }}
+            />
+            <Column
+              field="adress"
+              header="Ад."
+              editor={(options) => textEditor(options)}
+              sortable
+              //   editor={(options) => textEditor(options)}
+              // style={{ width: '20%' }}
+            />
+            <Column
+              field="mentor"
+              header="Учитель"
               editor={(options) => textEditor(options)}
               sortable
               //   editor={(options) => textEditor(options)}

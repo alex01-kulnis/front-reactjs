@@ -395,7 +395,7 @@ const CreateSectionPage = () => {
           </div>
         </div>
         <div className="section-button">
-          <input className="clear-button" value="Очистить" onClick={clear} />
+          <input type="button" className="clear-button" value="Очистить" onClick={clear} />
           <input type="submit" value="Сохранить" onClick={createSection} />
         </div>
       </form>
