@@ -6,10 +6,17 @@
   width: 100%;
   height: 100%;
 
+  .filter {
+    border: 1px solid black;
+  }
+
   .main-sections {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    padding: 5px 20px;
+    background: #f2f2f2;
+    border-radius: 10px;
   }
 }

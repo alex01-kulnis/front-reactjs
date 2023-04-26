@@ -1,6 +1,6 @@
 import axios from "axios";
 
-import ".//Sections.scss";
+import "./Sections.scss";
 
 const SectionItem = ({ sections }) => {
   if (!sections) {
@@ -31,35 +31,52 @@ const SectionItem = ({ sections }) => {
     <div className="post">
       <div className="post__content">
         <div>
-          <strong>Название</strong> : {sections.name}
+          <strong>Название</strong>: {sections.name}
         </div>
         <div>
-          <strong>Категория</strong> : {sections.category}
+          <strong>Категория</strong>: {sections.category}
         </div>
         <div>
-          <strong>Возраст</strong> : {sections.years} <strong>лет</strong>
-        </div>
-      </div>
-      <div className="post__content">
-        <div>
-          <strong>monday.</strong> : {sections.monday}
-        </div>
-        <div>
-          <strong>tuesday</strong> : {sections.tuesday}
-        </div>
-        <div>
-          <strong>wednesday</strong> : {sections.wednesday}
+          <strong>Возраст</strong>: {sections.years} <strong>лет</strong>
         </div>
       </div>
       <div className="post__content">
         <div>
-          <strong>thursday.</strong> : {sections.thursday}
+          <strong>Понедельник</strong>: {sections.monday}
         </div>
         <div>
-          <strong>friday</strong> : {sections.friday}
+          <strong>Вторник</strong>: {sections.tuesday}
         </div>
         <div>
-          <strong>saturday</strong> : {sections.saturday}
+          <strong>Среда</strong>: {sections.wednesday}
+        </div>
+      </div>
+      <div className="post__content">
+        <div>
+          <strong>Четверг</strong>: {sections.thursday}
+        </div>
+        <div>
+          <strong>Пятница</strong>: {sections.friday}
+        </div>
+        <div>
+          <strong>Суббота</strong>: {sections.saturday}
+        </div>
+        <div>
+          <strong>Воскресенье</strong>: {sections.sunday}
+        </div>
+      </div>
+      <div className="post__content">
+        <div>
+          <strong>Адрес</strong>: {sections.adress}
+        </div>
+        <div>
+          <strong>Наставник</strong>: {sections.mentor}
+        </div>
+        <div>
+          <strong>Описание</strong>: {sections.description}
+        </div>
+        <div>
+          <strong>Воскресенье</strong>: {sections.sunday}
         </div>
       </div>
       {/* <div className="post__btns">

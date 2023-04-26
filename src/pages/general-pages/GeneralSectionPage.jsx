@@ -26,6 +26,7 @@ const GeneralSectionPage = observer(() => {
 
   return (
     <div className="block-section">
+      <div className="filter">filter</div>
       <div className="main-sections">
         {sections.map((sections) => (
           <SectionItem sections={sections} key={sections.id} />
