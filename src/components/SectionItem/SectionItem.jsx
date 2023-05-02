@@ -1,8 +1,15 @@
+import { useState } from "react";
 import axios from "axios";
 
 import "./Sections.scss";
 
 const SectionItem = ({ sections }) => {
+  const [showText, setShowText] = useState(false);
+
+  const toggleText = () => {
+    setShowText(!showText);
+  };
+
   if (!sections) {
     return <h1 style={{ textAlign: "center", margin: "20px" }}>Секций нету!</h1>;
   }
@@ -65,20 +72,23 @@ const SectionItem = ({ sections }) => {
           <strong>Воскресенье</strong>: {sections.sunday}
         </div>
       </div>
-      <div className="post__content">
-        <div>
-          <strong>Адрес</strong>: {sections.adress}
+      <button onClick={toggleText}>{showText ? <>Скрыть</> : <>Подробнее</>}</button>
+      {showText && (
+        <div className="post__content">
+          <div>
+            <strong>Адрес</strong>: {sections.adress}
+          </div>
+          <div>
+            <strong>Наставник</strong>: {sections.mentor}
+          </div>
+          <div>
+            <strong>Описание</strong>: {sections.description}
+          </div>
+          <div>
+            <strong>Воскресенье</strong>: {sections.sunday}
+          </div>
         </div>
-        <div>
-          <strong>Наставник</strong>: {sections.mentor}
-        </div>
-        <div>
-          <strong>Описание</strong>: {sections.description}
-        </div>
-        <div>
-          <strong>Воскресенье</strong>: {sections.sunday}
-        </div>
-      </div>
+      )}
       {/* <div className="post__btns">
         <button className="accept-button" onClick={accept}>
           Принять
