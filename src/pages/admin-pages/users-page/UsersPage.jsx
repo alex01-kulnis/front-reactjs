@@ -14,6 +14,7 @@ import "primereact/resources/primereact.min.css";
 
 //icons
 import "primeicons/primeicons.css";
+import "./usersPage.scss";
 
 import axios from "axios";
 
@@ -21,7 +22,6 @@ const UsersPage = () => {
   const [users, setUsers] = useState(null);
   const [globalFilterValue, setGlobalFilterValue] = useState("");
 
-  // const [filters, setFilters] = useState(null);
   const [filters, setFilters] = useState({
     global: { value: null, matchMode: FilterMatchMode.CONTAINS },
   });
@@ -55,7 +55,9 @@ const UsersPage = () => {
   }, []);
 
   const initFilters = () => {
-    setFilters("");
+    setFilters({
+      global: { value: null, matchMode: FilterMatchMode.CONTAINS },
+    });
     setGlobalFilterValue("");
   };
 
@@ -71,9 +73,7 @@ const UsersPage = () => {
   const onGlobalFilterChange = (e) => {
     const value = e.target.value;
     let _filters = { ...filters };
-
     _filters["global"].value = value;
-
     setFilters(_filters);
     setGlobalFilterValue(value);
   };
@@ -115,109 +115,124 @@ const UsersPage = () => {
   const header = renderHeader();
 
   return (
-    <div className="card p-fluid">
-      <DataTable
-        value={users}
-        editMode="row"
-        dataKey="id"
-        onRowEditComplete={onRowEditComplete}
-        filterDisplay="row"
-        filters={filters}
-        globalFilterFields={["email", "login", "middle_name"]}
-        // tableStyle={{ minWidth: '50rem' }}
-        // scrollable
-        // scrollHeight="500px"
-        header={header}
-        sortOrder={1}
-        paginator
-        rows={5}
-        rowsPerPageOptions={[5, 10, 25, 50]}
-        paginatorTemplate="RowsPerPageDropdown FirstPageLink PrevPageLink CurrentPageReport NextPageLink LastPageLink"
-        currentPageReportTemplate="{first} to {last} of {totalRecords}"
-      >
-        <Column
-          field="id"
-          header="id"
-          editor={(options) => textEditor(options)}
-          sortable
-          // style={{ width: '20%' }}
-        />
-        <Column
-          field="login"
-          header="Логин"
-          editor={(options) => textEditor(options)}
-          sortable
-          filter
-          filterField="login"
-          // style={{ width: '20%' }}
-        />
-        <Column
-          field="email"
-          header="Почта"
-          editor={(options) => textEditor(options)}
-          sortable
-          filter
-          filterField="email"
+    <div className="user-block">
+      <div className="card p-fluid">
+        <DataTable
+          value={users}
+          editMode="row"
+          dataKey="id"
+          onRowEditComplete={onRowEditComplete}
+          filters={filters}
+          globalFilterFields={[
+            "email",
+            "login",
+            "middle_name",
+            "first_name",
+            "last_name",
+            "phone",
+          ]}
+          filterDisplay="row"
+          // tableStyle={{ minWidth: '50rem' }}
+          // scrollable
+          // scrollHeight="500px"
+          header={header}
+          sortOrder={1}
+          paginator
+          rows={5}
+          rowsPerPageOptions={[5, 10, 25, 50]}
+          paginatorTemplate="RowsPerPageDropdown FirstPageLink PrevPageLink CurrentPageReport NextPageLink LastPageLink"
+          currentPageReportTemplate="{first} to {last} of {totalRecords}"
+        >
+          <Column
+            field="id"
+            header="id"
+            editor={(options) => textEditor(options)}
+            sortable
+            // style={{ width: '20%' }}
+          />
+          <Column
+            field="login"
+            header="Логин"
+            editor={(options) => textEditor(options)}
+            sortable
+            filter
+            filterField="login"
+            // style={{ width: '20%' }}
+          />
+          <Column
+            field="email"
+            header="Почта"
+            editor={(options) => textEditor(options)}
+            sortable
+            filter
+            filterField="email"
 
-          // style={{ width: '20%' }}
-        />
-        {/* <Column
+            // style={{ width: '20%' }}
+          />
+          {/* <Column
           field="password"
           header="Пароль"
           editor={(options) => textEditor(options)}
           // style={{ width: '20%' }}
         /> */}
-        <Column
-          field="middle_name"
-          header="Фамилия"
-          editor={(options) => textEditor(options)}
-          sortable
-          filter
-          filterField="middle_name"
-          // style={{ width: '20%' }}
-        />
-        <Column
-          field="first_name"
-          header="Имя"
-          editor={(options) => textEditor(options)}
-          sortable
-          // style={{ width: '20%' }}
-        />
-        <Column
-          field="last_name"
-          header="Отчество"
-          editor={(options) => textEditor(options)}
-          sortable
-          // style={{ width: '20%' }}
-        />
-        <Column
-          field="phone"
-          header="Тел."
-          editor={(options) => textEditor(options)}
-          sortable
-          // style={{ width: '20%' }}
-        />
-        <Column
-          field="status"
-          header="Статус"
-          sortable
-          //   editor={(options) => textEditor(options)}
-          // style={{ width: '20%' }}
-        />
-        <Column
-          field="role.role"
-          header="Роль"
-          sortable
-          editor={(options) => textEditor(options)}
-          // style={{ width: '20%' }}
-        />
-        <Column
-          rowEditor
-          // headerStyle={{ width: "10%", minWidth: "50px" }}
-          bodyStyle={{ textAlign: "center" }}
-        />
-        <Column body={actionBodyTemplate} />
-      </DataTable>
+          <Column
+            field="middle_name"
+            header="Фамилия"
+            editor={(options) => textEditor(options)}
+            sortable
+            filter
+            filterField="middle_name"
+            // style={{ width: '20%' }}
+          />
+          <Column
+            field="first_name"
+            header="Имя"
+            editor={(options) => textEditor(options)}
+            sortable
+            filter
+            filterField="first_name"
+            // style={{ width: '20%' }}
+          />
+          <Column
+            field="last_name"
+            header="Отчество"
+            editor={(options) => textEditor(options)}
+            sortable
+            filter
+            filterField="last_name"
+            // style={{ width: '20%' }}
+          />
+          <Column
+            field="phone"
+            header="Тел."
+            editor={(options) => textEditor(options)}
+            sortable
+            filter
+            filterField="phone"
+            // style={{ width: '20%' }}
+          />
+          <Column
+            field="status"
+            header="Статус"
+            sortable
+            //   editor={(options) => textEditor(options)}
+            // style={{ width: '20%' }}
+          />
+          <Column
+            field="role.role"
+            header="Роль"
+            sortable
+            editor={(options) => textEditor(options)}
+            // style={{ width: '20%' }}
+          />
+          <Column
+            rowEditor
+            // headerStyle={{ width: "10%", minWidth: "50px" }}
+            bodyStyle={{ textAlign: "center" }}
+          />
+          <Column body={actionBodyTemplate} />
+        </DataTable>
+      </div>
     </div>
   );
 };
