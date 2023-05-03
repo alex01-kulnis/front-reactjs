@@ -9,6 +9,7 @@ import "./GeneralSectionPage.scss";
 
 const GeneralSectionPage = observer(() => {
   const [sections, setSections] = useState([]);
+  const [value, setValue] = useState("");
 
   const getSections = async () => {
     try {
@@ -24,11 +25,19 @@ const GeneralSectionPage = observer(() => {
     getSections().then((data) => setSections(data));
   }, []);
 
+  const filteredSections = sections.filter((section) => {
+    return section.name.toLowerCase().includes(value.toLocaleLowerCase());
+  });
+
   return (
     <div className="block-section">
+      <h1>Кружки и секции</h1>
+      <div>
+        <input onChange={(event) => setValue(event.target.value)} placeholder="Поиск..." />
+      </div>
       <div className="filter">filter</div>
       <div className="main-sections">
-        {sections.map((sections) => (
+        {filteredSections.map((sections) => (
           <SectionItem sections={sections} key={sections.id} />
         ))}
       </div>
