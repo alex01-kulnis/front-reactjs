@@ -7,15 +7,29 @@ import { SectionItem } from "../../components";
 import { useFieldState } from "../../hooks/useFieldState";
 
 import "./GeneralSectionPage.scss";
+import "./_categories.scss";
 import styles from "./Search.module.scss";
+
+const categories = ["Все", "Спортивные", "Творческие", "Танцевальные"];
 
 const GeneralSectionPage = observer(() => {
   const [category, setCategory] = useFieldState("Название секции");
   const onCategoryChange = (e) => {
     setCategory(e.target.value);
   };
+
   const [sections, setSections] = useState([]);
   const [value, setValue] = useState("");
+
+  const [filter, setFilter] = useState("Все");
+  const onFilterChange = (categoryName) => {
+    console.log(categoryName);
+    setFilter(categoryName);
+
+    // return filteredSections.filter((section) =>
+    //   section.category.toLowerCase().includes(categoryName.toLowerCase())
+    // );
+  };
 
   const getSections = async () => {
     try {
@@ -115,7 +129,20 @@ const GeneralSectionPage = observer(() => {
         </div>
       </div>
 
-      <div className="filter">filter</div>
+      <div className="categories">
+        <ul>
+          {categories.map((categoryName, index) => (
+            <li
+              key={categoryName}
+              onClick={() => onFilterChange(categoryName)}
+              className={filter === categoryName ? "active" : ""}
+            >
+              {categoryName}
+            </li>
+          ))}
+        </ul>
+      </div>
+
       <div className="main-sections">
         {filteredSections.map((sections) => (
           <SectionItem sections={sections} key={sections.id} />
