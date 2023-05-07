@@ -6,6 +6,7 @@ const InactiveUserItem = ({ users }) => {
   if (!users) {
     return <h1 style={{ textAlign: "center", margin: "20px" }}>Заявок нет!</h1>;
   }
+
   const refuse = async (e) => {
     // e.preventDefault();
     try {
@@ -20,6 +21,7 @@ const InactiveUserItem = ({ users }) => {
     // e.preventDefault();
     try {
       const res = await axios.patch(`http://localhost:3001/api/users/${users.id}`, {
+        email: users.email,
         status: "ACTIVE",
       });
       console.log(res);
