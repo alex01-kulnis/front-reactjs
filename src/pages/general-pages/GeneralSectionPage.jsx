@@ -17,18 +17,22 @@ const GeneralSectionPage = observer(() => {
   const onCategoryChange = (e) => {
     setCategory(e.target.value);
   };
-
+  const [globalSections, setGlobalSections] = useState([]);
   const [sections, setSections] = useState([]);
   const [value, setValue] = useState("");
 
   const [filter, setFilter] = useState("Все");
   const onFilterChange = (categoryName) => {
-    console.log(categoryName);
     setFilter(categoryName);
-
-    // return filteredSections.filter((section) =>
-    //   section.category.toLowerCase().includes(categoryName.toLowerCase())
-    // );
+    let result;
+    if (categoryName === "Все") {
+      result = globalSections;
+    } else {
+      result = globalSections.filter((section) =>
+        section.category.toLowerCase().includes(categoryName.toLowerCase())
+      );
+    }
+    setSections(result);
   };
 
   const getSections = async () => {
@@ -41,7 +45,9 @@ const GeneralSectionPage = observer(() => {
   };
 
   useEffect(() => {
-    getSections().then((data) => setSections(data));
+    getSections().then((data) => {
+      setSections(data), setGlobalSections(data);
+    });
   }, []);
 
   const onClickClear = () => {
