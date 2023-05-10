@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import "./Sections.scss";
+import "./Section-item.scss";
 
 const SectionItem = ({ sections }) => {
   const [showText, setShowText] = useState(false);
@@ -18,7 +18,9 @@ const SectionItem = ({ sections }) => {
   return (
     <div className="block-post">
       <div className="post-cont">
-        <h2>{sections.user.organization_name}</h2>
+        <div>
+          <h2>{sections.user.organization_name}</h2>
+        </div>
         <div className="info-descr-org">
           <div>
             ФИО: {sections.user.middle_name} {sections.user.first_name}
@@ -37,24 +39,68 @@ const SectionItem = ({ sections }) => {
           <div>Цена: {sections.category}</div>
           <div>Возраст: {sections.years}</div>
         </div>
-
         {showText && (
-          <div className="info-descr-section">
-            <div>
-              <strong>Адрес</strong>: {sections.adress}
+          <>
+            <h2>Адреса:</h2>
+            <div className="info-descr-section">
+              <div>
+                <strong>Адрес</strong>: {sections.adress}
+              </div>
+              <div>
+                <strong>Адрес 2</strong>: {sections.adress2 ? sections.adress2 : "-"}
+              </div>
+              <div>
+                <strong>Адрес 3</strong>: {sections.adress3 ? sections.adress3 : "-"}
+              </div>
             </div>
-            <div>
-              <strong>Наставник</strong>: {sections.mentor}
+            <h2>Наставники:</h2>
+            <div className="info-descr-section">
+              <div>
+                <strong>Наставник</strong>: {sections.mentor}
+              </div>
+              <div>
+                <strong>Наставник 2</strong>: {sections.mentor2 ? sections.mentor2 : "-"}
+              </div>
+              <div>
+                <strong>Наставник 3</strong>: {sections.mentor3 ? sections.mentor3 : "-"}
+              </div>
             </div>
-            <div>
-              <strong>Описание</strong>: {sections.description}
+            <h2>Расписание:</h2>
+            <div className="info-descr-section-days">
+              <div>
+                <div>
+                  <strong>Понедельник</strong>: {sections.monday}
+                </div>
+                <div>
+                  <strong>Вторник</strong>: {sections.tuesday}
+                </div>
+                <div>
+                  <strong>Среда</strong>: {sections.wednesday}
+                </div>
+                <div>
+                  <strong>Четверг</strong>: {sections.monday}
+                </div>
+              </div>
+              <div>
+                <div>
+                  <strong>Пятница</strong>: {sections.friday}
+                </div>
+                <div>
+                  <strong>Cуббота</strong>: {sections.saturday}
+                </div>
+                <div>
+                  <strong>Воскресенье</strong>: {sections.sunday}
+                </div>
+              </div>
             </div>
-            <div>
-              <strong>Воскресенье</strong>: {sections.sunday}
+            <h2>Описание:</h2>
+            <div className="info-descr-section">
+              <div>
+                <strong>Описание</strong>: {sections.description}
+              </div>
             </div>
-          </div>
+          </>
         )}
-
         <span onClick={toggleText}>{showText ? <>Скрыть</> : <>Подробнее</>}</span>
       </div>
     </div>

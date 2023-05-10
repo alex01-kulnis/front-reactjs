@@ -1,8 +1,8 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
 
-import { RegistrationPage, MainPage, AuthPage, GeneralSectionPage } from "../pages";
-import { UserHeader } from "../components";
+import { RegistrationPage, AuthPage, GeneralSectionPage } from "../pages";
+import { Footer, UserHeader } from "../components";
 
 const UserApp: React.FC = () => {
   return (
@@ -13,6 +13,7 @@ const UserApp: React.FC = () => {
         <Route path="/auth" element={<AuthPage />} />
         <Route path="/registration" element={<RegistrationPage />} />
       </Routes>
+      <Footer />
     </>
   );
 };

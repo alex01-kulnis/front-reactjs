@@ -5,6 +5,7 @@ import AdminHeader from "./admin-components/admin-header/AdminHeader";
 import InactiveUserItem from "./admin-components/inactive-user-item/InactiveUserItem";
 import OrgHeader from "./org-components/org-header/OrgHeader";
 import SectionItem from "./SectionItem/SectionItem";
+import Footer from "./footer/Footer";
 
 export {
   UserHeader,
@@ -14,4 +15,5 @@ export {
   InactiveUserItem,
   OrgHeader,
   SectionItem,
+  Footer,
 };
