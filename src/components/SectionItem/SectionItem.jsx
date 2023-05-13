@@ -23,7 +23,7 @@ const SectionItem = ({ sections }) => {
         </div>
         <div className="info-descr-org">
           <div>
-            ФИО: {sections.user.middle_name} {sections.user.first_name}
+            ФИО: {sections.user.middle_name} {sections.user.first_name}{" "}
             {sections.user.last_name}
           </div>
         </div>
