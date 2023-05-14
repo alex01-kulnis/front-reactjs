@@ -58,7 +58,7 @@ const InactiveUserItem = ({ users }) => {
           Принять
         </button>
         <button className="refuce-button" onClick={refuse}>
-          Отлонить
+          Отклонить
         </button>
       </div>
     </div>

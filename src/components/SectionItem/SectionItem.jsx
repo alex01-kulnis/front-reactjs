@@ -36,7 +36,7 @@ const SectionItem = ({ sections }) => {
         <div className="info-descr-section">
           <div>Название: {sections.name}</div>
           <div>Категория {sections.category}</div>
-          <div>Цена: {sections.category}</div>
+          <div>Цена: Бесплатно</div>
           <div>Возраст: {sections.years}</div>
         </div>
         {showText && (
