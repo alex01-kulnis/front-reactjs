@@ -55,7 +55,9 @@ const UsersPage = () => {
   }, []);
 
   const initFilters = () => {
-    setFilters("");
+    setFilters({
+      global: { value: null, matchMode: FilterMatchMode.CONTAINS },
+    });
     setGlobalFilterValue("");
   };
 
