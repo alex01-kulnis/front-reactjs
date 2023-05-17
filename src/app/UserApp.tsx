@@ -13,7 +13,7 @@ const UserApp: React.FC = () => {
         <Route path="/auth" element={<AuthPage />} />
         <Route path="/registration" element={<RegistrationPage />} />
       </Routes>
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 };

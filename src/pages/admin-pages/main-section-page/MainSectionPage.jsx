@@ -118,6 +118,7 @@ const SectionPage = () => {
             value={sections}
             editMode="row"
             dataKey="id"
+            showGridlines
             onRowEditComplete={onRowEditComplete}
             filters={filters}
             globalFilterFields={["name", "category", "years"]}

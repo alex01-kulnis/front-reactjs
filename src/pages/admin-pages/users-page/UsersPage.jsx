@@ -24,6 +24,12 @@ const UsersPage = () => {
 
   const [filters, setFilters] = useState({
     global: { value: null, matchMode: FilterMatchMode.CONTAINS },
+    login: { value: null, matchMode: FilterMatchMode.CONTAINS },
+    email: { value: null, matchMode: FilterMatchMode.CONTAINS },
+    middle_name: { value: null, matchMode: FilterMatchMode.CONTAINS },
+    first_name: { value: null, matchMode: FilterMatchMode.CONTAINS },
+    last_name: { value: null, matchMode: FilterMatchMode.CONTAINS },
+    phone: { value: null, matchMode: FilterMatchMode.CONTAINS },
   });
 
   const getUsers = async () => {
@@ -51,15 +57,7 @@ const UsersPage = () => {
 
   useEffect(() => {
     getUsers();
-    initFilters();
   }, []);
-
-  const initFilters = () => {
-    setFilters({
-      global: { value: null, matchMode: FilterMatchMode.CONTAINS },
-    });
-    setGlobalFilterValue("");
-  };
 
   const onRowEditComplete = (e) => {
     let _users = [...users];
@@ -123,6 +121,7 @@ const UsersPage = () => {
           dataKey="id"
           onRowEditComplete={onRowEditComplete}
           filters={filters}
+          showGridlines
           globalFilterFields={[
             "email",
             "login",
@@ -169,12 +168,6 @@ const UsersPage = () => {
 
             // style={{ width: '20%' }}
           />
-          {/* <Column
-          field="password"
-          header="Пароль"
-          editor={(options) => textEditor(options)}
-          // style={{ width: '20%' }}
-        /> */}
           <Column
             field="middle_name"
             header="Фамилия"
