@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 import { Notify } from "../../../service/toasts";
@@ -10,6 +11,7 @@ import "./authPage.scss";
 import "../../../components/UI/valid-input.scss";
 
 const AuthPage: React.FC = () => {
+  const navigate = useNavigate();
   const { user } = useContext(Context);
 
   const [login, setLogin] = useFieldState();
@@ -32,6 +34,7 @@ const AuthPage: React.FC = () => {
       localStorage.setItem("role", res.data.role);
       Notify.success("Авторизация прошла успешно!");
       user.setRole(res.data.role);
+      navigate("/");
       // console.log("res", res.data);
     } catch (e) {
       alert(e.response.data.message);
