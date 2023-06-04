@@ -32,7 +32,7 @@ const UserHeader: React.FC = observer(() => {
         <Link to="/">
           <div className="header-user__inscription">Главная</div>
         </Link>
-        <div className="header-user__inscription">Подписки</div>
+        {/* <div className="header-user__inscription">Подписки</div> */}
         {user._isAuth ? (
           <Link to="/">
             <div className="header-user__inscription" onClick={exit}>

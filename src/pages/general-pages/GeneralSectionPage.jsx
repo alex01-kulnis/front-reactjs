@@ -149,11 +149,15 @@ const GeneralSectionPage = observer(() => {
         </ul>
       </div>
 
-      <div className="main-sections">
-        {filteredSections.map((sections) => (
-          <SectionItem sections={sections} key={sections.id} />
-        ))}
-      </div>
+      {filteredSections.length >= 1 ? (
+        <div className="main-sections">
+          {filteredSections.map((sections) => (
+            <SectionItem sections={sections} key={sections.id} />
+          ))}
+        </div>
+      ) : (
+        <h1>Секций не найдено :(</h1>
+      )}
     </div>
   );
 });
